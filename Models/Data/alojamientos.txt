@@ -1,3 +1,6 @@
-1,Buenos Aires,Recoleta,3,2,True,1200
-2,Buenos Aires,San Telmo,2,2,False,3000,2,1
-123,buenos aires,retiro,4,1,True,1000
+543,La Plata,centro,2,2,False,3000,1,1
+863,buenos aires,retiro,4,1,True,1000
+645,Buenos aires,puerto madero,1,2,False,2000
+334,Buenos aires,puerto madero,3,2,True,2400,2,1
+752,Cordoba,villa carlos paz,2,3,True,1500
+123,La plata,Centro,3,2,True,3500

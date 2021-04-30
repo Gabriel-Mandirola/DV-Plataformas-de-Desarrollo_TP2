@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PC 345\\source\\repos\\solucionTP2\\Models\\AgenciaDeAlojamientos.csproj",
+      "projectUniqueName": "C:\\Users\\PC 345\\Source\\Repos\\DV-Plataformas-de-Desarrollo_TP2\\Models\\AgenciaDeAlojamientos.csproj",
       "projectName": "AgenciaDeAlojamientos",
-      "projectPath": "C:\\Users\\PC 345\\source\\repos\\solucionTP2\\Models\\AgenciaDeAlojamientos.csproj",
+      "projectPath": "C:\\Users\\PC 345\\Source\\Repos\\DV-Plataformas-de-Desarrollo_TP2\\Models\\AgenciaDeAlojamientos.csproj",
       "packagesPath": "C:\\Users\\PC 345\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PC 345\\source\\repos\\solucionTP2\\Models\\obj\\",
+      "outputPath": "C:\\Users\\PC 345\\Source\\Repos\\DV-Plataformas-de-Desarrollo_TP2\\Models\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\PC 345\\AppData\\Roaming\\NuGet\\NuGet.Config",

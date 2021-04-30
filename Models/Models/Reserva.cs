@@ -28,7 +28,7 @@ namespace AgenciaDeAlojamientos
 
 
         /* METODOS DE INTERFACES */
-        public string SerializarObjeto()
+        public string Serializar()
         {
             String objetoSerializado = "";
             objetoSerializado += this.GetId().ToString() + ",";

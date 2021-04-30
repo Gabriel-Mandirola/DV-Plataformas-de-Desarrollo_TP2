@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P1aMWThfIW/vQ0dpjCKQBWeQgcyQYE49WZfMheEMWEhStIL1FAp3uIIxeLABzSHaxJrTOShKV+V1+74p3ecZXg==",
+  "dgSpecHash": "p/YGoyr4G/avgPGPqnZQdEkxLrwQk8oeR0mzlrRXlJMmQMJ+crssLpJQrTtOE9pmPvXx1P99uPcRHMPWlIIL9Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PC 345\\source\\repos\\solucionTP2\\Models\\AgenciaDeAlojamientos.csproj",
+  "projectFilePath": "C:\\Users\\PC 345\\source\\repos\\DV-Plataformas-de-Desarrollo_TP2\\Models\\AgenciaDeAlojamientos.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

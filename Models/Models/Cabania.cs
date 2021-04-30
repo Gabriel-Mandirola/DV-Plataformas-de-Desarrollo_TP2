@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
+using AgenciaDeAlojamientos.Helpers;
+
 namespace AgenciaDeAlojamientos
 {
     class Cabania : Alojamiento
@@ -20,22 +22,23 @@ namespace AgenciaDeAlojamientos
             this.banios = banios;
         }
 
-        public static Cabania Deserializar(String[] cabaniaSerializada)
+        public static Cabania Deserializar(String cabaniaSerializada)
         {
+            String[] CabaniaArray = Utils.StringToArray(cabaniaSerializada);
 
             return new Cabania(
-                int.Parse(cabaniaSerializada[0]),
-                cabaniaSerializada[1],
-                cabaniaSerializada[2],
-                int.Parse(cabaniaSerializada[3]),
-                int.Parse(cabaniaSerializada[4]),
-                bool.Parse(cabaniaSerializada[5]),
-                double.Parse(cabaniaSerializada[6]),
-                int.Parse(cabaniaSerializada[7]),
-                int.Parse(cabaniaSerializada[8])
+                int.Parse(CabaniaArray[0]),
+                CabaniaArray[1],
+                CabaniaArray[2],
+                int.Parse(CabaniaArray[3]),
+                int.Parse(CabaniaArray[4]),
+                bool.Parse(CabaniaArray[5]),
+                double.Parse(CabaniaArray[6]),
+                int.Parse(CabaniaArray[7]),
+                int.Parse(CabaniaArray[8])
                 );
         }
-        public override string SerializarObjeto()
+        public override string Serializar()
         {
             String objetoSerializado = "";
             objetoSerializado += this.GetCodigo().ToString() + ",";

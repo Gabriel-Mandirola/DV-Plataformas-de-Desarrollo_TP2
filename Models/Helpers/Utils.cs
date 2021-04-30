@@ -3,21 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace AgenciaDeAlojamientos
+namespace AgenciaDeAlojamientos.Helpers
 {
-    partial class Utils
+    public class Utils
     {
-        // Rutas Absolutas
-        //public const String PATH_FILE_USUARIOS = @"C:\Users\PC 345\source\repos\solucionTP2\Models\Data\usuarios.txt";
-        //public const String PATH_FILE_ALOJAMIENTOS = @"C:\Users\PC 345\source\repos\solucionTP2\Models\Data\reservas.txt";
-        //public const String PATH_FILE_RESERVAS = @"C:\Users\PC 345\source\repos\solucionTP2\Models\Data\alojamientos.txt";
-        
-        // Rutas Relativas
-        public const String PATH_FILE_USUARIOS = "../../../Data/usuarios.txt";
-        public const String PATH_FILE_RESERVAS = "../../../Data/reservas.txt";
-        public const String PATH_FILE_ALOJAMIENTOS= "../../../Data/alojamientos.txt";
-
-        public static String[] StringSerializadoToArray(String str)
+        public static String[] StringToArray(String str)
         {
             return str.Split(",");
         }

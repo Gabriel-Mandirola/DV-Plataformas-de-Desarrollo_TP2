@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
+using AgenciaDeAlojamientos.Helpers;
+
 namespace AgenciaDeAlojamientos
 {
     class Hotel : Alojamiento
@@ -16,19 +18,21 @@ namespace AgenciaDeAlojamientos
             this.precioPorPersona = precioPorPersona;
         }
 
-        public static Hotel Deserializar(String[] hotelSerializado)
+        public static Hotel Deserializar(String hotelSerializado)
         {
+            String[] hotelArray = Utils.StringToArray(hotelSerializado);
+
             return new Hotel(
-                int.Parse(hotelSerializado[0]),
-                hotelSerializado[1],
-                hotelSerializado[2],
-                int.Parse(hotelSerializado[3]),
-                int.Parse(hotelSerializado[4]),
-                bool.Parse(hotelSerializado[5]),
-                double.Parse(hotelSerializado[6])
+                int.Parse(hotelArray[0]),
+                hotelArray[1],
+                hotelArray[2],
+                int.Parse(hotelArray[3]),
+                int.Parse(hotelArray[4]),
+                bool.Parse(hotelArray[5]),
+                double.Parse(hotelArray[6])
                 );
         }
-        public override String SerializarObjeto()
+        public override String Serializar()
         {
             String objetoSerializado = "";
             objetoSerializado += this.GetCodigo().ToString() + ",";

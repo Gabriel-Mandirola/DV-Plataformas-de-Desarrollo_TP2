@@ -8,7 +8,7 @@ namespace AgenciaDeAlojamientos
     {
         static void Main(string[] args)
         {
-            Pruebas.iniciar();
+            PruebasClaseAgencia.iniciar();
         }
     }
 }

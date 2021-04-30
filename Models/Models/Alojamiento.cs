@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using AgenciaDeAlojamientos.Helpers;
 using AgenciaDeAlojamientos.Interfaces;
 
 namespace AgenciaDeAlojamientos
@@ -35,7 +35,19 @@ namespace AgenciaDeAlojamientos
         }
 
         /* METODOS AGREGADOS */
+        public static Alojamiento Deserializar(String alojamientoSerializado)
+        {
+            int atributosDelTipoDeAlojamiento = Utils.StringToArray(alojamientoSerializado).Length;
 
+            if(atributosDelTipoDeAlojamiento == Hotel.CANTIDAD_DE_ATRIBUTOS)
+            {
+                return Hotel.Deserializar(alojamientoSerializado);
+            }else if(atributosDelTipoDeAlojamiento == Cabania.CANTIDAD_DE_ATRIBUTOS)
+            {
+                return Cabania.Deserializar(alojamientoSerializado);
+            }
+            return null;
+        }
 
 
         /* METODOS ESTATICOS, ABSTRACTOS Y DE INTERFACES */
@@ -44,7 +56,7 @@ namespace AgenciaDeAlojamientos
             return Alojamiento.MINIMO_NUMERO_DE_ESTRELLAS >= estrellas && estrellas <= Alojamiento.MAXIMO_NUMERO_DE_ESTRELLAS;
         }
         public abstract double Precio();
-        public abstract string SerializarObjeto();
+        public abstract string Serializar();
         public List<string> parsearObjetoALista()
         {
             return new List<string>() {

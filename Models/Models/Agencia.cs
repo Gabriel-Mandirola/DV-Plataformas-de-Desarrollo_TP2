@@ -2,12 +2,14 @@
 using System;
 using System.Collections.Generic;
 
+using AgenciaDeAlojamientos.Helpers;
+
 namespace AgenciaDeAlojamientos
 {
     class Agencia
     {
         /* Asegurar que solo el primer objeto creado
-         * modifique el archivo de alojamientos */
+         * modifique los archivos con los datos */
         private static int cantidadDeObjetos = 1;
         private bool objetoPrincipal = false;
         /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -151,20 +153,20 @@ namespace AgenciaDeAlojamientos
 
             this.objetoPrincipal = true;
 
-            List<String> contenidoDelArchivo = Utils.GetDataFile(Utils.PATH_FILE_ALOJAMIENTOS);
+            List<string> contenidoDelArchivo = Utils.GetDataFile(Config.PATH_FILE_ALOJAMIENTOS);
 
             if (contenidoDelArchivo == null) return;
 
             foreach (String alojamiento in contenidoDelArchivo)
             {
-                String[] alojamientoArray = Utils.StringSerializadoToArray(alojamiento);
-                if (alojamientoArray.Length == Hotel.CANTIDAD_DE_ATRIBUTOS)
+                int cantidadDeAtributosDelAlojamiento = Utils.StringToArray(alojamiento).Length;
+                if (cantidadDeAtributosDelAlojamiento == Hotel.CANTIDAD_DE_ATRIBUTOS)
                 {
-                    this.AgregarAlojamiento(Hotel.Deserializar(alojamientoArray));
+                    this.AgregarAlojamiento(Hotel.Deserializar(alojamiento));
                 }
-                else if(alojamientoArray.Length == Cabania.CANTIDAD_DE_ATRIBUTOS)
+                else if(cantidadDeAtributosDelAlojamiento == Cabania.CANTIDAD_DE_ATRIBUTOS)
                 {
-                    this.AgregarAlojamiento(Cabania.Deserializar(alojamientoArray));
+                    this.AgregarAlojamiento(Cabania.Deserializar(alojamiento));
                 }
             }
 
@@ -176,9 +178,9 @@ namespace AgenciaDeAlojamientos
             List<String> alojamientosInLista = new List<string>();
             foreach( Alojamiento al in this.alojamientos)
             {
-                alojamientosInLista.Add(al.SerializarObjeto());
+                alojamientosInLista.Add(al.Serializar());
             }
-            return Utils.WriteInFile(Utils.PATH_FILE_ALOJAMIENTOS ,alojamientosInLista);
+            return Utils.WriteInFile(Config.PATH_FILE_ALOJAMIENTOS, alojamientosInLista);
         }
 
 

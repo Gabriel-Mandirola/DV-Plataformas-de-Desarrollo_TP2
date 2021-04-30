@@ -6,6 +6,6 @@ namespace AgenciaDeAlojamientos.Interfaces
 {
     partial interface ISerializable
     {
-        String SerializarObjeto();
+        String Serializar();
     }
 }

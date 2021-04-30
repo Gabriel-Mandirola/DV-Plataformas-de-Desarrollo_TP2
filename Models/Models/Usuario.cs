@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using AgenciaDeAlojamientos.Helpers;
 using AgenciaDeAlojamientos.Interfaces;
 
 namespace AgenciaDeAlojamientos
@@ -27,7 +27,7 @@ namespace AgenciaDeAlojamientos
 
         
         /* METODOS DE INTERFACES */
-        public string SerializarObjeto()
+        public string Serializar()
         {
             String objetoSerializado = "";
             objetoSerializado += this.GetDni().ToString() + ",";
@@ -49,15 +49,16 @@ namespace AgenciaDeAlojamientos
                 this.bloqueado ? "si" : "no" 
             };
         }
-        public static Usuario Deserializar(String[] UsuarioSerializado)
+        public static Usuario Deserializar(String UsuarioSerializado)
         {
+            String[] usuarioArray = Utils.StringToArray(UsuarioSerializado);
             return new Usuario(
-                int.Parse(UsuarioSerializado[0]),
-                UsuarioSerializado[1],
-                UsuarioSerializado[2],
-                UsuarioSerializado[3],
-                bool.Parse(UsuarioSerializado[4]),
-                bool.Parse(UsuarioSerializado[5])
+                int.Parse(usuarioArray[0]),
+                usuarioArray[1],
+                usuarioArray[2],
+                usuarioArray[3],
+                bool.Parse(usuarioArray[4]),
+                bool.Parse(usuarioArray[5])
                 );
         }
 
