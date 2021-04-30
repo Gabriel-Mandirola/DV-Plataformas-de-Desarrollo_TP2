@@ -21,10 +21,10 @@ namespace AgenciaDeAlojamientos
         {
             this.alojamientos = new List<Alojamiento>();
             this.cantidadDeAlojamientos = 0;
-            this.cargarDatosDeAlojamientos();
+            this.cargarDatosDelArchivo();
         }
-        
-        // ABM de Alojamientos
+
+        #region ABM de Alojamientos
         public bool AgregarAlojamiento(Alojamiento alojamiento)
         {
             if (!this.GetObjetoPrincipal()) return false;
@@ -38,8 +38,6 @@ namespace AgenciaDeAlojamientos
             if (!this.GetObjetoPrincipal()) return false;
 
             Alojamiento al = this.FindAlojamientoForCodigo(alojamiento.GetCodigo());
-
-            if (al == null) return false;
             
             if (this.EliminarAlojamiento(al) && this.AgregarAlojamiento(alojamiento)) return true;
 
@@ -50,13 +48,13 @@ namespace AgenciaDeAlojamientos
             if (!this.GetObjetoPrincipal()) return false;
 
             int indexAlojamiento = this.alojamientos.FindIndex(al => al.GetCodigo() == alojamiento.GetCodigo());
-            if (indexAlojamiento == -1) return false; // -1 = no encontro el alojamientos
 
             // Elimino el alojamiento de la lista
             this.alojamientos.RemoveAt(indexAlojamiento);
             this.cantidadDeAlojamientos--;
             return true;
         }
+        #endregion
 
         public Agencia GetHoteles()
         {
@@ -140,13 +138,9 @@ namespace AgenciaDeAlojamientos
         }
         public bool ExisteAlojamiento(Alojamiento alojamiento)
         {
-            foreach (Alojamiento al in this.alojamientos)
-            {
-                if (al.IgualCodigo(alojamiento)) return true;
-            }
-            return false;
+            return this.alojamientos.Exists(al => al.IgualCodigo(alojamiento));
         }
-        private void cargarDatosDeAlojamientos()
+        private void cargarDatosDelArchivo()
         {
             // Solo se van a cargar los datos con la primer agencia que se cree
             if (Agencia.GetCantidadDeObjetos() > 1) return;
@@ -193,7 +187,7 @@ namespace AgenciaDeAlojamientos
         }
 
 
-        /* GETTERS Y SETTERS */
+        #region GETTERS Y SETTERS
         public int GetCantidadDeAlojamientos()
         {
             return this.cantidadDeAlojamientos;
@@ -202,11 +196,10 @@ namespace AgenciaDeAlojamientos
         {
             return this.alojamientos;
         }
-
         public bool GetObjetoPrincipal()
         {
             return this.objetoPrincipal;
         }
-
+        #endregion
     }
 }

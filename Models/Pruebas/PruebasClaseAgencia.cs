@@ -4,7 +4,7 @@ using System.Text;
 
 using AgenciaDeAlojamientos.Helpers;
 
-namespace AgenciaDeAlojamientos
+namespace AgenciaDeAlojamientos.Pruebas
 {
     class PruebasClaseAgencia
     {
@@ -71,28 +71,84 @@ namespace AgenciaDeAlojamientos
             #endregion
 
 
-            /* ~~~~~~~~~~~~ Pruebas de alojamientos en la agencia con la persistencia de los datos ~~~~~~~~~~~~ */
+            #region prueba CRUD de alojamientos con Agencia
+            //List<AgenciaDeAlojamientos> pathUser = Utils.GetDataFile(Config.PATH_FILE_ALOJAMIENTOS);
+            Agencia agencia = new Agencia();
 
-            //Agencia agencia = new Agencia();
+            /* CREATE */
+            //if (agencia.ExisteAlojamiento(new Hotel(999893, "La plata", "Centro", 3, 2, true, 3500)))
+            //{
+            //    Console.WriteLine("El alojamiento ya existe");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("No se encontro el alojamiento");
+            //    if (agencia.AgregarAlojamiento(new Hotel(999893, "La plata", "Centro", 3, 2, true, 3500)))
+            //    {
+            //        Console.WriteLine("Alojamiento agregado a la lista de alojamientos");
+            //        if (agencia.GuardarCambiosEnElArchivo())
+            //        {
+            //            Console.WriteLine("Los cambios fueron guardados en el archivo");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine("No se pudo guardar el alojamiento en el archivo");
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("No se pudo agregar el alojamietno a la lista");
+            //    }
+            //}
 
-            /* Agregar varios alojamientos */
-            //Hotel h1 = new Hotel(123, "buenos aires", "retiro", 4, 1, true, 1000);
-            //new List<Alojamiento>() { hotel1, hotel2, hotel3, cabania1, cabania2, h1 }.ForEach( al => {
-            //    bool flag = !agencia.ExisteAlojamiento(al) && agencia.AgregarAlojamiento(al) && agencia.GuardarCambiosEnElArchivo();
-            //    Console.WriteLine((flag ? "Se agrego el alojamiento: " : "No se agrego el alojamiento: ") + al.Serializar());
-            //});
+            /* DELETE */
+            //Alojamiento al = new Hotel(999893, "La plata", "Centro", 3, 2, true, 3500);
+            //if (!agencia.ExisteAlojamiento(al))
+            //{
+            //    Console.WriteLine("No existe el alojamiento");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Alojamiento encontrado");
+            //    if (agencia.EliminarAlojamiento(al))
+            //    {
+            //        Console.WriteLine("Alojamiento eliminado de la lista de alojamientos");
+            //        if (agencia.GuardarCambiosEnElArchivo())
+            //        {
+            //            Console.WriteLine("Cambios guardados en el archivo");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine("No se pudieron guardar los cambios");
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("El alojamiento no se pudo eliminar");
+            //    }
+            //}
 
-            /* Eliminar alojamiento */
-            //Hotel h2 = new Hotel(123, "buenos aires", "retiro", 4, 1, true, 1000);
-            //bool flagH2 = agencia.ExisteAlojamiento(h2) && agencia.EliminarAlojamiento(h2) && agencia.GuardarCambiosEnElArchivo();
-            //Console.WriteLine(flagH2 ? $"Alojamiento eliminado: {h2.Serializar()}" : "No se pudo eliminar");
+            /* UPDATE */
+            //Alojamiento alojamiento = new Cabania(543, "La Plata", "Centro", 3, 2, true, 4000, 1, 1);
+            //if (!agencia.ExisteAlojamiento(alojamiento)){
+            //    Console.WriteLine("No existe ese alojamientos");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Alojamiento modificado en alojamientos de la clase Agencia");
+            //    agencia.ModificarAlojamiento(alojamiento);
+            //    if (agencia.GuardarCambiosEnElArchivo())
+            //    {
+            //        Console.WriteLine("Los cambios fueron guardados en el archivo de alojamientos.txt");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("No se pudieron guardar los alojamientos");
+            //    }
+            //}
 
-            /* Modificar alojamiento */
-            //Hotel h3 = new Hotel(123, "La plata", "Centro", 3, 2, true, 3500);
-            //bool flagH3 = agencia.ExisteAlojamiento(h3) && agencia.ModificarAlojamiento(h3) && agencia.GuardarCambiosEnElArchivo();
-            //Console.WriteLine(flagH3 ? "Alojamiento modificado" : "No se pudo modificar");
 
-
+            #endregion
         }
     }
 }

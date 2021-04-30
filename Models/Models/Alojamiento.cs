@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+
 using AgenciaDeAlojamientos.Helpers;
 using AgenciaDeAlojamientos.Interfaces;
 
@@ -35,14 +36,15 @@ namespace AgenciaDeAlojamientos
         }
 
         /* METODOS AGREGADOS */
-        public static Alojamiento Deserializar(String alojamientoSerializado)
+        public Alojamiento Deserializar(String alojamientoSerializado)
         {
             int atributosDelTipoDeAlojamiento = Utils.StringToArray(alojamientoSerializado).Length;
 
             if(atributosDelTipoDeAlojamiento == Hotel.CANTIDAD_DE_ATRIBUTOS)
             {
                 return Hotel.Deserializar(alojamientoSerializado);
-            }else if(atributosDelTipoDeAlojamiento == Cabania.CANTIDAD_DE_ATRIBUTOS)
+            }
+            else if(atributosDelTipoDeAlojamiento == Cabania.CANTIDAD_DE_ATRIBUTOS)
             {
                 return Cabania.Deserializar(alojamientoSerializado);
             }
@@ -69,10 +71,10 @@ namespace AgenciaDeAlojamientos
                 this.Precio().ToString()
             };
         }
-        
 
 
-        /* GETTERS Y SETTERS */
+
+        #region GETTERS Y SETTERS 
         public int GetCodigo()
         {
             return this.codigo;
@@ -97,6 +99,6 @@ namespace AgenciaDeAlojamientos
         {
             return this.tv;
         }
-
+        #endregion
     }
 }
