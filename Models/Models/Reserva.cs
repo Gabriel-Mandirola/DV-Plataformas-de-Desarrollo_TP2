@@ -8,7 +8,6 @@ namespace AgenciaDeAlojamientos
 {
     class Reserva: ISerializable, IDatosParaLasVistas
     {
-        private static int proximoId = 1;
 
         private int id;
         private DateTime fechaDesde;
@@ -17,22 +16,14 @@ namespace AgenciaDeAlojamientos
         private Usuario usuario;
         private double precio;
 
-        public Reserva(DateTime fechaDesde, DateTime fechaHasta, Alojamiento alojamiento, Usuario usuario, double precio)
+        public Reserva(int id, DateTime fechaDesde, DateTime fechaHasta, Alojamiento alojamiento, Usuario usuario, double precio)
         {
-            this.id = Reserva.generarId();
+            this.id = id;
             this.fechaDesde = fechaDesde;
             this.fechaHasta = fechaHasta;
             this.alojamiento = alojamiento;
             this.usuario = usuario;
             this.precio = precio;
-        }
-
-        private static int generarId()
-        {
-            int id = Reserva.proximoId;
-            Reserva.proximoId++;
-
-            return id;
         }
 
 
