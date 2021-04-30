@@ -1,0 +1,81 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.IO;
+
+namespace AgenciaDeAlojamientos
+{
+    partial class Utils
+    {
+        // Rutas Absolutas
+        //public const String PATH_FILE_USUARIOS = @"C:\Users\PC 345\source\repos\solucionTP2\Models\Data\usuarios.txt";
+        //public const String PATH_FILE_ALOJAMIENTOS = @"C:\Users\PC 345\source\repos\solucionTP2\Models\Data\reservas.txt";
+        //public const String PATH_FILE_RESERVAS = @"C:\Users\PC 345\source\repos\solucionTP2\Models\Data\alojamientos.txt";
+        
+        // Rutas Relativas
+        public const String PATH_FILE_USUARIOS = "../../../Data/usuarios.txt";
+        public const String PATH_FILE_RESERVAS = "../../../Data/reservas.txt";
+        public const String PATH_FILE_ALOJAMIENTOS= "../../../Data/alojamientos.txt";
+
+        public static String[] StringSerializadoToArray(String str)
+        {
+            return str.Split(",");
+        }
+
+        // Return List<String> | null
+        public static List<String> GetDataFile(String pathFile)
+        {
+            List<String> data = new List<string>();
+            try
+            {
+                //Pass the file path and file name to the StreamReader constructor
+                StreamReader sr = new StreamReader(pathFile);
+
+                //Read the first line of text
+                String line = sr.ReadLine();
+
+                if (line == null) return null;
+
+                while (line != null)
+                {
+                    // Guardo en la lista
+                    data.Add(line);
+                    // Proxima linea
+                    line = sr.ReadLine();
+                }
+                //close the file
+                sr.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+            return data;
+        }
+
+        // Sobre escribe el contenido anterior
+        public static bool WriteInFile(String pathFile, List<String> contenidoDelArchivo )
+        {
+            try
+            {
+                //Pass the filepath and filename to the StreamWriter Constructor
+                StreamWriter sw = new StreamWriter(pathFile);
+                
+                foreach (String fila in contenidoDelArchivo)
+                {
+                    sw.WriteLine(fila);
+                }
+
+                //Close the file
+                sw.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+                return false;
+            }
+        }
+
+    }
+}
