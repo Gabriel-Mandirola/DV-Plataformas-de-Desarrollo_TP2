@@ -11,6 +11,7 @@ namespace AgenciaDeAlojamientos
         static void Main(string[] args)
         {
             PruebasClaseAgencia.iniciar();
+
             //PruebasClaseUsuario.iniciar();
         }
     }

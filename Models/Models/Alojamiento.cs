@@ -7,7 +7,7 @@ using AgenciaDeAlojamientos.Interfaces;
 
 namespace AgenciaDeAlojamientos.Models
 {
-    abstract partial class Alojamiento
+    abstract internal class Alojamiento
     {
         #region Atributos y Constructor
         public const int MAXIMO_NUMERO_DE_ESTRELLAS = 5;
@@ -22,12 +22,12 @@ namespace AgenciaDeAlojamientos.Models
 
         public Alojamiento(int codigo, String ciudad, String barrio, int estrellas, int cantidadDePersonas, bool tv )
         {
-            this.codigo = codigo;
-            this.ciudad = ciudad;
-            this.barrio = barrio;
-            this.estrellas = estrellas;
-            this.cantidadDePersonas= cantidadDePersonas;
-            this.tv= tv;
+            this.setCodigo(codigo);
+            this.SetCiudad(ciudad);
+            this.SetBarrio(barrio);
+            this.SetEstrellas(estrellas);
+            this.SetCantidadDePersonas(cantidadDePersonas);
+            this.SetTv(tv);
         }
         #endregion
 
@@ -35,8 +35,6 @@ namespace AgenciaDeAlojamientos.Models
         {
             return alojamiento.GetCodigo() == this.GetCodigo();
         }
-
-        /* METODOS AGREGADOS */
 
 
         /* METODOS ESTATICOS, ABSTRACTOS Y DE INTERFACES */
@@ -55,35 +53,24 @@ namespace AgenciaDeAlojamientos.Models
             objetoSerializado += this.GetBarrio() + ",";
             objetoSerializado += this.GetEstrellas().ToString() + ",";
             objetoSerializado += this.GetCantidadDePersonas().ToString() + ",";
-            objetoSerializado += this.GetTV().ToString();
+            objetoSerializado += this.GetTv().ToString();
             return objetoSerializado;
         }
 
         #region GETTERS Y SETTERS 
-        public int GetCodigo()
-        {
-            return this.codigo;
-        }
-        public String GetCiudad()
-        {
-            return this.ciudad;
-        }
-        public String GetBarrio()
-        {
-            return this.barrio;
-        }
-        public int GetEstrellas()
-        {
-            return this.estrellas;
-        }
-        public int GetCantidadDePersonas()
-        {
-            return this.cantidadDePersonas;
-        }
-        public bool GetTV()
-        {
-            return this.tv;
-        }
+        public int GetCodigo(){ return this.codigo; }
+        public String GetCiudad(){ return this.ciudad; }
+        public String GetBarrio(){ return this.barrio; }
+        public int GetEstrellas(){ return this.estrellas; }
+        public int GetCantidadDePersonas(){ return this.cantidadDePersonas; }
+        public bool GetTv(){ return this.tv; }
+        
+        private void setCodigo(int codigo){ this.codigo = codigo; }
+        public void SetCiudad(String ciudad){ this.ciudad = ciudad; }
+        public void SetBarrio(String barrio){ this.barrio = barrio; }
+        public void SetEstrellas(int estrellas){ this.estrellas = estrellas; }
+        public void SetCantidadDePersonas(int cantidadDePersonas) { this.cantidadDePersonas = cantidadDePersonas; }
+        public void SetTv(bool tieneTv) { this.tv = tieneTv; }
         #endregion
     }
 }

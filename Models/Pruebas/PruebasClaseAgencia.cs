@@ -7,7 +7,7 @@ using AgenciaDeAlojamientos.Models;
 
 namespace AgenciaDeAlojamientos.Pruebas
 {
-    partial class PruebasClaseAgencia
+    internal class PruebasClaseAgencia
     {
         public static void iniciar()
         {
@@ -16,7 +16,6 @@ namespace AgenciaDeAlojamientos.Pruebas
             //var hotel3 = new Hotel(645, "Buenos aires", "puerto madero", 1, 2, false, 2000);
             //var cabania1 = new Cabania(334, "Buenos aires", "puerto madero", 3, 2, true, 2400, 2, 1);
             //var cabania2 = new Cabania(543, "La Plata", "centro", 2, 2, false, 3000, 1, 1);
-
 
             #region Pruebas de ABM del archivo usuariosDePrueba.txt
             /* ~~~~~~~~~~~~ Leer archivo y convertirlo a lista de objetos ~~~~~~~~~~~~ */
@@ -50,10 +49,18 @@ namespace AgenciaDeAlojamientos.Pruebas
             //Console.WriteLine(Util.WriteInFile(pathTest, usersSerializado) ? "Cambios guardados" : "Error en los cambios");
             #endregion
 
+            #region Pruebas de los metodos de la clase Agencia
+            
+            // TODO: Pruebas de los metodos de la clase agencia
+            // Los metodos de agregar, modificar y eliminar ya estan hechos.
+            #endregion
 
             #region prueba CRUD de alojamientos con Agencia
             List<String> pathUser = Utils.GetDataFile(Config.PATH_FILE_ALOJAMIENTOS);
             Agencia agencia = new Agencia();
+
+            /* READ */
+            //agencia.GetAlojamientos().ForEach(alojamiento => Console.WriteLine(alojamiento));
 
             /* CREATE */
             //if (agencia.ExisteAlojamiento(new Hotel(999893, "La plata", "Centro", 3, 2, true, 3500)))
@@ -109,31 +116,31 @@ namespace AgenciaDeAlojamientos.Pruebas
             //}
 
             /* UPDATE */
-            //Alojamiento alojamiento = new Cabania(543, "La Plata", "Centro", 3, 2, true, 4000, 1, 1);
-            //if (!agencia.ExisteAlojamiento(alojamiento))
-            //{
-            //    Console.WriteLine("No existe ese alojamientos");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("El alojamiento si existe (fue encontrado)");
-            //    if (agencia.ModificarAlojamiento(alojamiento))
-            //    {
-            //        Console.WriteLine("EL alojamiento fue modificado de la lista de alojamientos");
-            //        if (agencia.GuardarCambiosEnElArchivo())
-            //        {
-            //            Console.WriteLine("Los cambios fueron guardados en el archivo de alojamientos.txt");
-            //        }
-            //        else
-            //        {
-            //            Console.WriteLine("No se pudieron guardar los alojamientos");
-            //        }
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("No se pudo modificadar de la lista de alojamientos");
-            //    }
-            //}
+            Alojamiento alojamiento = new Cabania(543, "La Plata", "Centro", 3, 2, true, 4000, 1, 1);
+            if (!agencia.ExisteAlojamiento(alojamiento))
+            {
+                Console.WriteLine("No existe ese alojamientos");
+            }
+            else
+            {
+                Console.WriteLine("El alojamiento si existe (fue encontrado)");
+                if (agencia.ModificarAlojamiento(alojamiento))
+                {
+                    Console.WriteLine("EL alojamiento fue modificado de la lista de alojamientos");
+                    if (agencia.GuardarCambiosEnElArchivo())
+                    {
+                        Console.WriteLine("Los cambios fueron guardados en el archivo de alojamientos.txt");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No se pudieron guardar los alojamientos");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No se pudo modificadar de la lista de alojamientos");
+                }
+            }
             #endregion
 
         }

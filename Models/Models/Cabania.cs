@@ -6,7 +6,7 @@ using AgenciaDeAlojamientos.Helpers;
 
 namespace AgenciaDeAlojamientos.Models
 {
-    partial class Cabania : Alojamiento
+    internal class Cabania : Alojamiento
     {
         public const int CANTIDAD_DE_ATRIBUTOS = 9;
 

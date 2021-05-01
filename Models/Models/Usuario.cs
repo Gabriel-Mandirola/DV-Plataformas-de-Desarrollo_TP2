@@ -6,7 +6,7 @@ using AgenciaDeAlojamientos.Interfaces;
 
 namespace AgenciaDeAlojamientos.Models
 {
-    partial class Usuario
+    internal class Usuario
     {
         private int dni;
         private String nombre;

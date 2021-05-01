@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AgenciaDeAlojamientos.Interfaces
+namespace AgenciaDeAlojamientos.Pruebas
 {
-    internal interface IDatosParaLasVistas
+    internal class PruebasClaseReserva
     {
     }
 }

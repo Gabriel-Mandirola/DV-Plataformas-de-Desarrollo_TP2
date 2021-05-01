@@ -6,7 +6,7 @@ using AgenciaDeAlojamientos.Helpers;
 
 namespace AgenciaDeAlojamientos.Models
 {
-    partial class Agencia
+    internal class Agencia
     {
         private List<Alojamiento> alojamientos;
         private int cantidadDeAlojamientos;
@@ -27,11 +27,11 @@ namespace AgenciaDeAlojamientos.Models
         }
         public bool ModificarAlojamiento(Alojamiento alojamiento)
         {
-            Alojamiento al = this.FindAlojamientoForCodigo(alojamiento.GetCodigo());
-            if (al == null) return false;
+            int indexAlojamiento = this.alojamientos.FindIndex(al => al.IgualCodigo(alojamiento));
+            if (indexAlojamiento == -1) return false;
 
-            if (this.EliminarAlojamiento(al.GetCodigo()) && this.AgregarAlojamiento(alojamiento)) return true;
-            return false;
+            this.alojamientos[indexAlojamiento] = alojamiento;
+            return true;
         }
         public bool EliminarAlojamiento(int codigoDelAlojamiento)
         {
@@ -160,15 +160,8 @@ namespace AgenciaDeAlojamientos.Models
         }
 
 
-        #region GETTERS Y SETTERS
-        public int GetCantidadDeAlojamientos()
-        {
-            return this.cantidadDeAlojamientos;
-        }
-        public List<Alojamiento> GetAlojamientos()
-        {
-            return this.alojamientos;
-        }
+        #region GETTER
+        public int GetCantidadDeAlojamientos() { return this.cantidadDeAlojamientos; }
         #endregion
     }
 }

@@ -7,7 +7,7 @@ using AgenciaDeAlojamientos.Helpers;
 
 namespace AgenciaDeAlojamientos.Pruebas
 {
-    partial class PruebasClaseUsuario
+    internal class PruebasClaseUsuario
     {
 
         public static void iniciar()

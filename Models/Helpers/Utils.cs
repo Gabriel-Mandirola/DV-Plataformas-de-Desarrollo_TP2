@@ -5,7 +5,7 @@ using System.IO;
 
 namespace AgenciaDeAlojamientos.Helpers
 {
-    partial class Utils
+    internal class Utils
     {
         public static String[] StringToArray(String str)
         {
@@ -23,8 +23,6 @@ namespace AgenciaDeAlojamientos.Helpers
 
                 //Read the first line of text
                 String line = sr.ReadLine();
-
-                if (line == null) return null;
 
                 while (line != null)
                 {

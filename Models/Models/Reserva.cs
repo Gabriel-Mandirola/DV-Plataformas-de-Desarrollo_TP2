@@ -6,9 +6,9 @@ using AgenciaDeAlojamientos.Interfaces;
 
 namespace AgenciaDeAlojamientos.Models
 {
-    partial class Reserva
+    internal class Reserva
     {
-
+        #region Atributos y constructor
         private int id;
         private DateTime fechaDesde;
         private DateTime fechaHasta;
@@ -25,21 +25,10 @@ namespace AgenciaDeAlojamientos.Models
             this.SetUsuario(usuario);
             this.SetPrecio(precio);
         }
-
+        #endregion
 
         /* METODOS DE INTERFACES */
-        public List<string> parsearObjetoALista()
-        {
-            return new List<string>()
-            {
-                this.id.ToString(),
-                this.fechaDesde.ToString(),
-                this.fechaHasta.ToString(),
-                this.alojamiento.GetCodigo().ToString(),
-                this.usuario.GetDni().ToString(),
-                this.precio.ToString()
-            };
-        }
+        
 
 
         /* ToString */
