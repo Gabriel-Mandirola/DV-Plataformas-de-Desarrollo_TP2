@@ -50,9 +50,10 @@ namespace AgenciaDeAlojamientos.Pruebas
             #endregion
 
             #region Pruebas de los metodos de la clase Agencia
-            
+
             // TODO: Pruebas de los metodos de la clase agencia
-            // Los metodos de agregar, modificar y eliminar ya estan hechos.
+            // Los metodos de agregar, modificar y eliminar alojamientos ya estan hechos y probados.
+
             #endregion
 
             #region prueba CRUD de alojamientos con Agencia
@@ -116,31 +117,31 @@ namespace AgenciaDeAlojamientos.Pruebas
             //}
 
             /* UPDATE */
-            Alojamiento alojamiento = new Cabania(543, "La Plata", "Centro", 3, 2, true, 4000, 1, 1);
-            if (!agencia.ExisteAlojamiento(alojamiento))
-            {
-                Console.WriteLine("No existe ese alojamientos");
-            }
-            else
-            {
-                Console.WriteLine("El alojamiento si existe (fue encontrado)");
-                if (agencia.ModificarAlojamiento(alojamiento))
-                {
-                    Console.WriteLine("EL alojamiento fue modificado de la lista de alojamientos");
-                    if (agencia.GuardarCambiosEnElArchivo())
-                    {
-                        Console.WriteLine("Los cambios fueron guardados en el archivo de alojamientos.txt");
-                    }
-                    else
-                    {
-                        Console.WriteLine("No se pudieron guardar los alojamientos");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("No se pudo modificadar de la lista de alojamientos");
-                }
-            }
+            //Alojamiento alojamiento = new Cabania(543, "La Plata", "Centro", 3, 2, true, 4000, 1, 1);
+            //if (!agencia.ExisteAlojamiento(alojamiento))
+            //{
+            //    Console.WriteLine("No existe ese alojamientos");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("El alojamiento si existe (fue encontrado)");
+            //    if (agencia.ModificarAlojamiento(alojamiento))
+            //    {
+            //        Console.WriteLine("EL alojamiento fue modificado de la lista de alojamientos");
+            //        if (agencia.GuardarCambiosEnElArchivo())
+            //        {
+            //            Console.WriteLine("Los cambios fueron guardados en el archivo de alojamientos.txt");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine("No se pudieron guardar los alojamientos");
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("No se pudo modificadar de la lista de alojamientos");
+            //    }
+            //}
             #endregion
 
         }

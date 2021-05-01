@@ -132,8 +132,7 @@ namespace AgenciaDeAlojamientos.Models
         private void cargarDatosDeLosAlojamientos()
         {
             List<string> contenidoDelArchivo = Utils.GetDataFile(Config.PATH_FILE_ALOJAMIENTOS);
-
-            if (contenidoDelArchivo == null) return;
+            if (contenidoDelArchivo.Count == 0) return;
 
             foreach (String alojamiento in contenidoDelArchivo)
             {
