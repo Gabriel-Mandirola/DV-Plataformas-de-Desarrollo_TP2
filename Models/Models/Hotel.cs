@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 
 using AgenciaDeAlojamientos.Helpers;
+using AgenciaDeAlojamientos.Interfaces;
 
-namespace AgenciaDeAlojamientos
+namespace AgenciaDeAlojamientos.Models
 {
-    class Hotel : Alojamiento
+    partial class Hotel : Alojamiento
     {
         public const int CANTIDAD_DE_ATRIBUTOS = 7;
 
@@ -15,7 +16,7 @@ namespace AgenciaDeAlojamientos
         public Hotel(int codigo, string ciudad, string barrio, int estrellas, int cantidadDePersonas, bool tv, double precioPorPersona) : 
             base(codigo, ciudad, barrio, estrellas, cantidadDePersonas, tv)
         {
-            this.precioPorPersona = precioPorPersona;
+            this.SetPrecioPorPersona(precioPorPersona);
         }
 
         public static Hotel Deserializar(String hotelSerializado)
@@ -32,31 +33,22 @@ namespace AgenciaDeAlojamientos
                 double.Parse(hotelArray[6])
                 );
         }
-        public override String Serializar()
-        {
-            String objetoSerializado = "";
-            objetoSerializado += this.GetCodigo().ToString() + ",";
-            objetoSerializado += this.GetCiudad().ToString() + ",";
-            objetoSerializado += this.GetBarrio() + ",";
-            objetoSerializado += this.GetEstrellas().ToString() + ",";
-            objetoSerializado += this.GetCantidadDePersonas().ToString() + ",";
-            objetoSerializado += this.GetTV().ToString() + ",";
-            objetoSerializado += this.GetPrecioPorPersona().ToString();
-
-            return objetoSerializado;
-        }
-        public override double Precio()
+        public override double PrecioTotalDelAlojamiento()
         {
             return this.GetPrecioPorPersona() * this.GetCantidadDePersonas();
         }
 
-
-
-        /* GETTERS Y SETTERS */
-        public double GetPrecioPorPersona()
+        /* ToString */
+        public override string ToString()
         {
-            return this.precioPorPersona;
+            String objetoSerializado = base.ToString() + ",";
+            objetoSerializado += this.GetPrecioPorPersona().ToString();
+            return objetoSerializado;
         }
 
+        #region GETTERS Y SETTERS
+        public double GetPrecioPorPersona(){ return this.precioPorPersona; }
+        public void SetPrecioPorPersona(double precio) { this.precioPorPersona = precio; }
+        #endregion
     }
 }

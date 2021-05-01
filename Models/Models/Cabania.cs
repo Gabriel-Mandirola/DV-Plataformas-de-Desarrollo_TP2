@@ -4,9 +4,9 @@ using System.Text;
 
 using AgenciaDeAlojamientos.Helpers;
 
-namespace AgenciaDeAlojamientos
+namespace AgenciaDeAlojamientos.Models
 {
-    class Cabania : Alojamiento
+    partial class Cabania : Alojamiento
     {
         public const int CANTIDAD_DE_ATRIBUTOS = 9;
 
@@ -17,9 +17,9 @@ namespace AgenciaDeAlojamientos
         public Cabania(int codigo, string ciudad, string barrio, int estrellas, int cantidadDePersonas, bool tv, double precioPorDia, int habitaciones, int banios) : 
             base(codigo, ciudad, barrio, estrellas, cantidadDePersonas, tv)
         {
-            this.precioPorDia = precioPorDia;
-            this.habitaciones = habitaciones;
-            this.banios = banios;
+            this.SetPrecioPorDia(precioPorDia);
+            this.SetHabitaciones(habitaciones);
+            this.SetBanios(banios);
         }
 
         public static Cabania Deserializar(String cabaniaSerializada)
@@ -38,27 +38,22 @@ namespace AgenciaDeAlojamientos
                 int.Parse(CabaniaArray[8])
                 );
         }
-        public override string Serializar()
-        {
-            String objetoSerializado = "";
-            objetoSerializado += this.GetCodigo().ToString() + ",";
-            objetoSerializado += this.GetCiudad().ToString() + ",";
-            objetoSerializado += this.GetBarrio() + ",";
-            objetoSerializado += this.GetEstrellas().ToString() + ",";
-            objetoSerializado += this.GetCantidadDePersonas().ToString() + ",";
-            objetoSerializado += this.GetTV().ToString() + ",";
-            objetoSerializado += this.GetPrecioPorDia().ToString() + ",";
-            objetoSerializado += this.GetHabitaciones().ToString() + ",";
-            objetoSerializado += this.GetBanios().ToString();
-
-            return objetoSerializado;
-        }
-        public override double Precio()
+        public override double PrecioTotalDelAlojamiento()
         {
             return this.precioPorDia;
         }
 
-        /* GETTERS Y SETTERS */
+        /* ToString*/
+        public override string ToString()
+        {
+            String objetoSerializado = base.ToString() + ",";
+            objetoSerializado += this.GetPrecioPorDia().ToString() + ",";
+            objetoSerializado += this.GetHabitaciones().ToString() + ",";
+            objetoSerializado += this.GetBanios().ToString();
+            return objetoSerializado;
+        }
+
+        #region GETTERS Y SETTERS
         public double GetPrecioPorDia()
         {
             return this.precioPorDia;
@@ -71,6 +66,10 @@ namespace AgenciaDeAlojamientos
         {
             return this.banios;
         }
-
+        
+        public void SetPrecioPorDia(double precioPorDia) { this.precioPorDia = precioPorDia; }
+        public void SetHabitaciones(int habitaciones) { this.habitaciones = habitaciones; }
+        public void SetBanios(int banios) { this.banios = banios; }
+        #endregion
     }
 }

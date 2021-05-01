@@ -6,6 +6,5 @@ namespace AgenciaDeAlojamientos.Interfaces
 {
     interface IDatosParaLasVistas
     {
-        List<String> parsearObjetoALista();
     }
 }

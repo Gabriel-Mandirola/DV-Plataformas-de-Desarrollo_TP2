@@ -3,40 +3,20 @@ using System.Collections.Generic;
 using System.Text;
 
 using AgenciaDeAlojamientos.Helpers;
+using AgenciaDeAlojamientos.Models;
 
 namespace AgenciaDeAlojamientos.Pruebas
 {
-    class PruebasClaseAgencia
+    partial class PruebasClaseAgencia
     {
         public static void iniciar()
         {
-            var hotel1 = new Hotel(863, "buenos aires", "retiro", 4, 1, true, 1000);
-            var hotel2 = new Hotel(752, "Cordoba", "villa carlos paz", 2, 3, true, 1500);
-            var hotel3 = new Hotel(645, "Buenos aires", "puerto madero", 1, 2, false, 2000);
-            var cabania1 = new Cabania(334, "Buenos aires", "puerto madero", 3, 2, true, 2400, 2, 1);
-            var cabania2 = new Cabania(543, "La Plata", "centro", 2, 2, false, 3000, 1, 1);
+            //var hotel1 = new Hotel(863, "buenos aires", "retiro", 4, 1, true, 1000);
+            //var hotel2 = new Hotel(752, "Cordoba", "villa carlos paz", 2, 3, true, 1500);
+            //var hotel3 = new Hotel(645, "Buenos aires", "puerto madero", 1, 2, false, 2000);
+            //var cabania1 = new Cabania(334, "Buenos aires", "puerto madero", 3, 2, true, 2400, 2, 1);
+            //var cabania2 = new Cabania(543, "La Plata", "centro", 2, 2, false, 3000, 1, 1);
 
-            #region Pruebas de la clase agencia
-            //var agencia = new Agencia();
-            //agencia.AgregarAlojamiento(hotel1);
-            //agencia.AgregarAlojamiento(hotel2);
-            //agencia.AgregarAlojamiento(hotel3);
-            //agencia.AgregarAlojamiento(cabania1);
-            //agencia.AgregarAlojamiento(cabania2);
-
-            /* ~~~~~~~~~~~~ Pruebas de los metodos de Agencia ~~~~~~~~~~~~ */
-            //Console.WriteLine(agencia.GetCantidadDeAlojamientos());
-            //Console.WriteLine(agencia.AlojamientosEntrePrecios(1200,2000).GetCantidadDeAlojamientos());
-            //Console.WriteLine(agencia.GetHoteles().GetCantidadDeAlojamientos
-            //Console.WriteLine(agencia.GetCabanias().GetCantidadDeAlojamientos());
-            //Console.WriteLine(agencia.GetAlojamientosConUnMinimoDeEstrellas(3).GetCantidadDeAlojamientos());
-            //Console.WriteLine(agencia.GetCabaniasEntrePrecios(1000,3000).GetCantidadDeAlojamientos());
-
-            //Usuario user1 = new Usuario(12312312, "juan","juan@gmail.com","1234",True);
-            //Usuario user2 = new Usuario(23423423, "pepe","pepe@gmail.com","1234",False,True);
-            //Reserva reserva1 = new Reserva(1234, new DateTime(2020, 5, 3, 15, 30, 00), new DateTime(2020, 5, 10, 15, 30, 00), hotel1, user1, hotel1.Precio());
-            //Reserva reserva2 = new Reserva(2345, new DateTime(2020, 6, 13, 5, 30, 00), new DateTime(2020, 6, 20, 5, 30, 00), hotel2, user1, hotel2.Precio());
-            #endregion
 
             #region Pruebas de ABM del archivo usuariosDePrueba.txt
             /* ~~~~~~~~~~~~ Leer archivo y convertirlo a lista de objetos ~~~~~~~~~~~~ */
@@ -72,7 +52,7 @@ namespace AgenciaDeAlojamientos.Pruebas
 
 
             #region prueba CRUD de alojamientos con Agencia
-            //List<AgenciaDeAlojamientos> pathUser = Utils.GetDataFile(Config.PATH_FILE_ALOJAMIENTOS);
+            List<String> pathUser = Utils.GetDataFile(Config.PATH_FILE_ALOJAMIENTOS);
             Agencia agencia = new Agencia();
 
             /* CREATE */
@@ -110,7 +90,7 @@ namespace AgenciaDeAlojamientos.Pruebas
             //else
             //{
             //    Console.WriteLine("Alojamiento encontrado");
-            //    if (agencia.EliminarAlojamiento(al))
+            //    if (agencia.EliminarAlojamiento(al.GetCodigo()))
             //    {
             //        Console.WriteLine("Alojamiento eliminado de la lista de alojamientos");
             //        if (agencia.GuardarCambiosEnElArchivo())
@@ -130,25 +110,32 @@ namespace AgenciaDeAlojamientos.Pruebas
 
             /* UPDATE */
             //Alojamiento alojamiento = new Cabania(543, "La Plata", "Centro", 3, 2, true, 4000, 1, 1);
-            //if (!agencia.ExisteAlojamiento(alojamiento)){
+            //if (!agencia.ExisteAlojamiento(alojamiento))
+            //{
             //    Console.WriteLine("No existe ese alojamientos");
             //}
             //else
             //{
-            //    Console.WriteLine("Alojamiento modificado en alojamientos de la clase Agencia");
-            //    agencia.ModificarAlojamiento(alojamiento);
-            //    if (agencia.GuardarCambiosEnElArchivo())
+            //    Console.WriteLine("El alojamiento si existe (fue encontrado)");
+            //    if (agencia.ModificarAlojamiento(alojamiento))
             //    {
-            //        Console.WriteLine("Los cambios fueron guardados en el archivo de alojamientos.txt");
+            //        Console.WriteLine("EL alojamiento fue modificado de la lista de alojamientos");
+            //        if (agencia.GuardarCambiosEnElArchivo())
+            //        {
+            //            Console.WriteLine("Los cambios fueron guardados en el archivo de alojamientos.txt");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine("No se pudieron guardar los alojamientos");
+            //        }
             //    }
             //    else
             //    {
-            //        Console.WriteLine("No se pudieron guardar los alojamientos");
+            //        Console.WriteLine("No se pudo modificadar de la lista de alojamientos");
             //    }
             //}
-
-
             #endregion
+
         }
     }
 }

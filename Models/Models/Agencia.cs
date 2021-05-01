@@ -4,16 +4,10 @@ using System.Collections.Generic;
 
 using AgenciaDeAlojamientos.Helpers;
 
-namespace AgenciaDeAlojamientos
+namespace AgenciaDeAlojamientos.Models
 {
-    class Agencia
+    partial class Agencia
     {
-        /* Asegurar que solo el primer objeto creado
-         * modifique los archivos con los datos */
-        private static int cantidadDeObjetos = 1;
-        private bool objetoPrincipal = false;
-        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
         private List<Alojamiento> alojamientos;
         private int cantidadDeAlojamientos;
 
@@ -21,33 +15,28 @@ namespace AgenciaDeAlojamientos
         {
             this.alojamientos = new List<Alojamiento>();
             this.cantidadDeAlojamientos = 0;
-            this.cargarDatosDelArchivo();
+            this.cargarDatosDeLosAlojamientos();
         }
 
         #region ABM de Alojamientos
         public bool AgregarAlojamiento(Alojamiento alojamiento)
         {
-            if (!this.GetObjetoPrincipal()) return false;
-
             this.alojamientos.Add(alojamiento);
             this.cantidadDeAlojamientos++;
             return true;
         }
         public bool ModificarAlojamiento(Alojamiento alojamiento)
         {
-            if (!this.GetObjetoPrincipal()) return false;
-
             Alojamiento al = this.FindAlojamientoForCodigo(alojamiento.GetCodigo());
-            
-            if (this.EliminarAlojamiento(al) && this.AgregarAlojamiento(alojamiento)) return true;
+            if (al == null) return false;
 
+            if (this.EliminarAlojamiento(al.GetCodigo()) && this.AgregarAlojamiento(alojamiento)) return true;
             return false;
         }
-        public bool EliminarAlojamiento(Alojamiento alojamiento)
+        public bool EliminarAlojamiento(int codigoDelAlojamiento)
         {
-            if (!this.GetObjetoPrincipal()) return false;
-
-            int indexAlojamiento = this.alojamientos.FindIndex(al => al.GetCodigo() == alojamiento.GetCodigo());
+            int indexAlojamiento = this.alojamientos.FindIndex(al => al.GetCodigo() == codigoDelAlojamiento);
+            if (indexAlojamiento == -1) return false;
 
             // Elimino el alojamiento de la lista
             this.alojamientos.RemoveAt(indexAlojamiento);
@@ -98,7 +87,7 @@ namespace AgenciaDeAlojamientos
             Agencia agencia = new Agencia();
             foreach(Alojamiento al in this.alojamientos)
             {
-                if(al.Precio() >= minimo && al.Precio() <= maximo)
+                if(al.PrecioTotalDelAlojamiento() >= minimo && al.PrecioTotalDelAlojamiento() <= maximo)
                 {
                     agencia.AgregarAlojamiento(al);
                 }
@@ -110,7 +99,7 @@ namespace AgenciaDeAlojamientos
             Agencia agencia = new Agencia();
             foreach(Alojamiento al in this.alojamientos)
             {
-                if ( al is Cabania && al.Precio() >= minimo && al.Precio() <= maximo)
+                if ( al is Cabania && al.PrecioTotalDelAlojamiento() >= minimo && al.PrecioTotalDelAlojamiento() <= maximo)
                 {
                     agencia.AgregarAlojamiento(al);
                 }
@@ -122,7 +111,7 @@ namespace AgenciaDeAlojamientos
             Agencia agencia = new Agencia();
             foreach (Alojamiento al in this.alojamientos)
             {
-                if (al is Hotel && al.Precio() >= minimo && al.Precio() <= maximo)
+                if (al is Hotel && al.PrecioTotalDelAlojamiento() >= minimo && al.PrecioTotalDelAlojamiento() <= maximo)
                 {
                     agencia.AgregarAlojamiento(al);
                 }
@@ -140,13 +129,8 @@ namespace AgenciaDeAlojamientos
         {
             return this.alojamientos.Exists(al => al.IgualCodigo(alojamiento));
         }
-        private void cargarDatosDelArchivo()
+        private void cargarDatosDeLosAlojamientos()
         {
-            // Solo se van a cargar los datos con la primer agencia que se cree
-            if (Agencia.GetCantidadDeObjetos() > 1) return;
-
-            this.objetoPrincipal = true;
-
             List<string> contenidoDelArchivo = Utils.GetDataFile(Config.PATH_FILE_ALOJAMIENTOS);
 
             if (contenidoDelArchivo == null) return;
@@ -167,23 +151,12 @@ namespace AgenciaDeAlojamientos
         }
         public bool GuardarCambiosEnElArchivo()
         {
-            if (!this.GetObjetoPrincipal()) return false;
-
             List<String> alojamientosInLista = new List<string>();
             foreach( Alojamiento al in this.alojamientos)
             {
-                alojamientosInLista.Add(al.Serializar());
+                alojamientosInLista.Add(al.ToString());
             }
             return Utils.WriteInFile(Config.PATH_FILE_ALOJAMIENTOS, alojamientosInLista);
-        }
-
-
-        /* METODOS ESTATICO */
-        private static int GetCantidadDeObjetos()
-        {
-            int cantidad = Agencia.cantidadDeObjetos;
-            Agencia.cantidadDeObjetos++;
-            return cantidad;
         }
 
 
@@ -195,10 +168,6 @@ namespace AgenciaDeAlojamientos
         public List<Alojamiento> GetAlojamientos()
         {
             return this.alojamientos;
-        }
-        public bool GetObjetoPrincipal()
-        {
-            return this.objetoPrincipal;
         }
         #endregion
     }

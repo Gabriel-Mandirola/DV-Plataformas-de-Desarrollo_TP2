@@ -6,12 +6,12 @@ using AgenciaDeAlojamientos.Pruebas;
 
 namespace AgenciaDeAlojamientos
 {
-    class Program
+    partial class Program
     {
         static void Main(string[] args)
         {
-            //PruebasClaseAgencia.iniciar();
-            PruebasClaseUsuario.iniciar();
+            PruebasClaseAgencia.iniciar();
+            //PruebasClaseUsuario.iniciar();
         }
     }
 }

@@ -4,9 +4,9 @@ using System.Text;
 
 using AgenciaDeAlojamientos.Interfaces;
 
-namespace AgenciaDeAlojamientos
+namespace AgenciaDeAlojamientos.Models
 {
-    class Reserva: ISerializable, IDatosParaLasVistas
+    partial class Reserva
     {
 
         private int id;
@@ -18,28 +18,16 @@ namespace AgenciaDeAlojamientos
 
         public Reserva(int id, DateTime fechaDesde, DateTime fechaHasta, Alojamiento alojamiento, Usuario usuario, double precio)
         {
-            this.id = id;
-            this.fechaDesde = fechaDesde;
-            this.fechaHasta = fechaHasta;
-            this.alojamiento = alojamiento;
-            this.usuario = usuario;
-            this.precio = precio;
+            this.setId(id);
+            this.SetFechaDesde(fechaDesde);
+            this.SetFechaDesde(fechaHasta);
+            this.SetAlojamiento(alojamiento);
+            this.SetUsuario(usuario);
+            this.SetPrecio(precio);
         }
 
 
         /* METODOS DE INTERFACES */
-        public string Serializar()
-        {
-            String objetoSerializado = "";
-            objetoSerializado += this.GetId().ToString() + ",";
-            objetoSerializado += this.GetFechaDesde() + ",";
-            objetoSerializado += this.GetFechaHasta() + ",";
-            objetoSerializado += this.GetAlojamiento().GetCodigo().ToString() + ",";
-            objetoSerializado += this.GetUsuario().GetDni().ToString() + ",";
-            objetoSerializado += this.GetAlojamiento().Precio().ToString();
-
-            return objetoSerializado;
-        }
         public List<string> parsearObjetoALista()
         {
             return new List<string>()
@@ -54,12 +42,33 @@ namespace AgenciaDeAlojamientos
         }
 
 
-        /* GETTERS Y SETTERS */
+        /* ToString */
+        public override string ToString()
+        {
+            String objetoSerializado = "";
+            objetoSerializado += this.GetId().ToString() + ",";
+            objetoSerializado += this.GetFechaDesde() + ",";
+            objetoSerializado += this.GetFechaHasta() + ",";
+            objetoSerializado += this.GetAlojamiento().GetCodigo().ToString() + ",";
+            objetoSerializado += this.GetUsuario().GetDni().ToString() + ",";
+            objetoSerializado += this.GetAlojamiento().PrecioTotalDelAlojamiento().ToString();
+            return objetoSerializado;
+        }
+
+        #region GETTERS Y SETTERS
         public int GetId() { return this.id; }
         public DateTime GetFechaDesde() { return this.fechaDesde; }
         public DateTime GetFechaHasta() { return this.fechaHasta; }
         public Alojamiento GetAlojamiento() { return this.alojamiento; }
         public Usuario GetUsuario() { return this.usuario; }
         public double GetPrecio() { return this.precio; }
+        private void setId(int id) { this.id = id; }
+        public void SetFechaDesde(DateTime fechaDesde) { this.fechaDesde = fechaDesde; }
+        public void SetFechaHasta(DateTime fechaHasta) { this.fechaHasta = fechaHasta; }
+        public void SetAlojamiento(Alojamiento alojamiento) { this.alojamiento = alojamiento; }
+        public void SetUsuario(Usuario usuario) { this.usuario = usuario; }
+        public void SetPrecio(double precio) { this.precio = precio; }
+        #endregion
+
     }
 }

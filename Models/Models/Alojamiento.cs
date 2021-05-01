@@ -5,10 +5,11 @@ using System.Text;
 using AgenciaDeAlojamientos.Helpers;
 using AgenciaDeAlojamientos.Interfaces;
 
-namespace AgenciaDeAlojamientos
+namespace AgenciaDeAlojamientos.Models
 {
-    abstract class Alojamiento: ISerializable, IDatosParaLasVistas
+    abstract partial class Alojamiento
     {
+        #region Atributos y Constructor
         public const int MAXIMO_NUMERO_DE_ESTRELLAS = 5;
         public const int MINIMO_NUMERO_DE_ESTRELLAS = 1;
 
@@ -18,7 +19,7 @@ namespace AgenciaDeAlojamientos
         private int estrellas;
         private int cantidadDePersonas;
         private bool tv;
-    
+
         public Alojamiento(int codigo, String ciudad, String barrio, int estrellas, int cantidadDePersonas, bool tv )
         {
             this.codigo = codigo;
@@ -28,28 +29,14 @@ namespace AgenciaDeAlojamientos
             this.cantidadDePersonas= cantidadDePersonas;
             this.tv= tv;
         }
-    
-        
+        #endregion
+
         public bool IgualCodigo(Alojamiento alojamiento)
         {
             return alojamiento.GetCodigo() == this.GetCodigo();
         }
 
         /* METODOS AGREGADOS */
-        public Alojamiento Deserializar(String alojamientoSerializado)
-        {
-            int atributosDelTipoDeAlojamiento = Utils.StringToArray(alojamientoSerializado).Length;
-
-            if(atributosDelTipoDeAlojamiento == Hotel.CANTIDAD_DE_ATRIBUTOS)
-            {
-                return Hotel.Deserializar(alojamientoSerializado);
-            }
-            else if(atributosDelTipoDeAlojamiento == Cabania.CANTIDAD_DE_ATRIBUTOS)
-            {
-                return Cabania.Deserializar(alojamientoSerializado);
-            }
-            return null;
-        }
 
 
         /* METODOS ESTATICOS, ABSTRACTOS Y DE INTERFACES */
@@ -57,22 +44,20 @@ namespace AgenciaDeAlojamientos
         {
             return Alojamiento.MINIMO_NUMERO_DE_ESTRELLAS >= estrellas && estrellas <= Alojamiento.MAXIMO_NUMERO_DE_ESTRELLAS;
         }
-        public abstract double Precio();
-        public abstract string Serializar();
-        public List<string> parsearObjetoALista()
+        public abstract double PrecioTotalDelAlojamiento();
+
+        /* ToString */
+        public override string ToString()
         {
-            return new List<string>() {
-                this.GetCodigo().ToString(),
-                this.GetCiudad().ToString(),
-                this.GetBarrio(),
-                this.GetEstrellas().ToString(),
-                this.GetCantidadDePersonas().ToString(),
-                this.GetTV().ToString(),
-                this.Precio().ToString()
-            };
+            String objetoSerializado = "";
+            objetoSerializado += this.GetCodigo().ToString() + ",";
+            objetoSerializado += this.GetCiudad().ToString() + ",";
+            objetoSerializado += this.GetBarrio() + ",";
+            objetoSerializado += this.GetEstrellas().ToString() + ",";
+            objetoSerializado += this.GetCantidadDePersonas().ToString() + ",";
+            objetoSerializado += this.GetTV().ToString();
+            return objetoSerializado;
         }
-
-
 
         #region GETTERS Y SETTERS 
         public int GetCodigo()

@@ -5,7 +5,7 @@ using System.IO;
 
 namespace AgenciaDeAlojamientos.Helpers
 {
-    public class Utils
+    partial class Utils
     {
         public static String[] StringToArray(String str)
         {
