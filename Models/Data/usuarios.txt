@@ -1,2 +1,6 @@
-12312312,juan,juan @gmail.com,1234,True,False
-23423423,pepe,pepe @gmail.com,1234,False,False
+12312312,juan,juan@gmail.com,1234,True,False
+23423423,pepe,pepe@gmail.com,1234,False,False
+34534534,martina,martina@gmail.com,1234,True,False
+45645645,martin,martin@gmail.com,1234,False,False
+56756756,jose,jose@gmail.com,1234,False,False
+67867867,sofia,sofia@gmail.com,1234,False,False

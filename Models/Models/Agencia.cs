@@ -45,82 +45,20 @@ namespace AgenciaDeAlojamientos.Models
         }
         #endregion
 
-        public Agencia GetHoteles()
-        {
-            Agencia agencia = new Agencia();
-            foreach(Alojamiento al in this.alojamientos)
-            {
-                if( al is Hotel)
-                {
-                    agencia.AgregarAlojamiento(al);
-                }
-            }
-            return agencia;
-        }
-        public Agencia GetCabanias()
-        {
-            Agencia agencia = new Agencia();
-            foreach (Alojamiento al in this.alojamientos)
-            {
-                if (al is Cabania)
-                {
-                    agencia.AgregarAlojamiento(al);
-                }
-            }
-            return agencia;
-        }
-
-        public Agencia GetAlojamientosConUnMinimoDeEstrellas(int minimo)
-        {
-            Agencia agencia = new Agencia();
-            foreach (Alojamiento al in this.alojamientos)
-            {
-                if (al.GetEstrellas() >= minimo)
-                {
-                    agencia.AgregarAlojamiento(al);
-                }
-            }
-            return agencia;
-        }
-        public Agencia AlojamientosEntrePrecios(double minimo, double maximo)
-        {
-            Agencia agencia = new Agencia();
-            foreach(Alojamiento al in this.alojamientos)
-            {
-                if(al.PrecioTotalDelAlojamiento() >= minimo && al.PrecioTotalDelAlojamiento() <= maximo)
-                {
-                    agencia.AgregarAlojamiento(al);
-                }
-            }
-            return agencia;
-        }
-        public Agencia GetCabaniasEntrePrecios(double minimo, double maximo)
-        {
-            Agencia agencia = new Agencia();
-            foreach(Alojamiento al in this.alojamientos)
-            {
-                if ( al is Cabania && al.PrecioTotalDelAlojamiento() >= minimo && al.PrecioTotalDelAlojamiento() <= maximo)
-                {
-                    agencia.AgregarAlojamiento(al);
-                }
-            }
-            return agencia;
-        }
-        public Agencia GetHotelesEntrePrecios(double minimo, double maximo)
-        {
-            Agencia agencia = new Agencia();
-            foreach (Alojamiento al in this.alojamientos)
-            {
-                if (al is Hotel && al.PrecioTotalDelAlojamiento() >= minimo && al.PrecioTotalDelAlojamiento() <= maximo)
-                {
-                    agencia.AgregarAlojamiento(al);
-                }
-            }
-            return agencia;
-        }
+        /* Metodos para obtener Alojamientos con filtros */
+        // TODO: Agregar los siguientes metodos:
+        /*
+        * GetHoteles(): List < Hotel >
+        * GetHoteles(double precioMinimo, double precioMaximo): List < Hotel >
+        * GetCabanias(): List < Cabania >
+        * GetCabanias(double precioMinimo, double precioMaximo): List < Cabania >
+        * GetAllAlojamientos(): List < Alojamiento >
+        * GetAllAlojamientos(int minimoEstrellas): List < Alojamiento >
+        * GetAllAlojamientos(double precioMinimo, double precioMaximo): List<Alojamiento>
+        */
 
 
-        /* METODOS AGREGADOS */
+        /* Metodos complementarios */
         public Alojamiento FindAlojamientoForCodigo(int codigoAlojamiento)
         {
             return this.alojamientos.Find( al => al.GetCodigo() == codigoAlojamiento );
@@ -146,7 +84,6 @@ namespace AgenciaDeAlojamientos.Models
                     this.AgregarAlojamiento(Cabania.Deserializar(alojamiento));
                 }
             }
-
         }
         public bool GuardarCambiosEnElArchivo()
         {
@@ -159,8 +96,8 @@ namespace AgenciaDeAlojamientos.Models
         }
 
 
-        #region GETTER
+        /* GETTER */
         public int GetCantidadDeAlojamientos() { return this.cantidadDeAlojamientos; }
-        #endregion
+
     }
 }

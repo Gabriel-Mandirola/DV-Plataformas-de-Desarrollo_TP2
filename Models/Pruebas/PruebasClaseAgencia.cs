@@ -17,43 +17,11 @@ namespace AgenciaDeAlojamientos.Pruebas
             //var cabania1 = new Cabania(334, "Buenos aires", "puerto madero", 3, 2, true, 2400, 2, 1);
             //var cabania2 = new Cabania(543, "La Plata", "centro", 2, 2, false, 3000, 1, 1);
 
-            #region Pruebas de ABM del archivo usuariosDePrueba.txt
-            /* ~~~~~~~~~~~~ Leer archivo y convertirlo a lista de objetos ~~~~~~~~~~~~ */
-            //String pathTest = "../../../Data/usuariosDePrueba.txt";
-            //List<Usuario> userTest = new List<Usuario>();
-            //Utils.GetDataFile(pathTest).ForEach(user => userTest.Add(Usuario.Deserializar(user)));
-            //userTest.ForEach(user => Console.WriteLine(user.Serializar()));
-
-            /* ~~~~~~~~~~~~ Eliminar un objeto de un archivo ~~~~~~~~~~~~ */
-            //Usuario userToDelete = userTest.Find(user => user.GetDni() == 34534534);
-            //userTest.Remove(userToDelete);
-            //List<String> usersSerializados = new List<string>();
-            //foreach (Usuario user in userTest)
-            //{
-            //    usersSerializados.Add(user.Serializar());
-            //}
-            //Console.WriteLine(Util.WriteInFile(pathTest, usersSerializados) ? "Eliminado" : "No se elimino");
-
-            /* ~~~~~~~~~~~~ Modificar un objeto del archivo ~~~~~~~~~~~~ */
-            //Usuario userToUpdate = userTest.Find(user => user.GetDni() == 45645645);
-            //userToUpdate.SetNombre("Saul");
-            //userToUpdate.SetEmail("saul@gmail.com");
-            //userToUpdate.SetBloqueado(true);
-
-            //List<String> usersSerializado = new List<string>();
-            //foreach (Usuario user in userTest)
-            //{
-            //    Console.WriteLine(user.Serializar());
-            //    usersSerializado.Add(user.Serializar());
-            //}
-            //Console.WriteLine(Util.WriteInFile(pathTest, usersSerializado) ? "Cambios guardados" : "Error en los cambios");
-            #endregion
 
             #region Pruebas de los metodos de la clase Agencia
 
-            // TODO: Pruebas de los metodos de la clase agencia
-            // Los metodos de agregar, modificar y eliminar alojamientos ya estan hechos y probados.
-
+            // TODO: Probar los metodos agregados en la clase Agencia:
+            
             #endregion
 
             #region prueba CRUD de alojamientos con Agencia

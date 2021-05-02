@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using AgenciaDeAlojamientos.Helpers;
-using AgenciaDeAlojamientos.Interfaces;
 
 namespace AgenciaDeAlojamientos.Models
 {
     abstract internal class Alojamiento
     {
-        #region Atributos y Constructor
         public const int MAXIMO_NUMERO_DE_ESTRELLAS = 5;
         public const int MINIMO_NUMERO_DE_ESTRELLAS = 1;
 
@@ -29,20 +23,19 @@ namespace AgenciaDeAlojamientos.Models
             this.SetCantidadDePersonas(cantidadDePersonas);
             this.SetTv(tv);
         }
-        #endregion
-
+        
         public bool IgualCodigo(Alojamiento alojamiento)
         {
             return alojamiento.GetCodigo() == this.GetCodigo();
         }
 
-
-        /* METODOS ESTATICOS, ABSTRACTOS Y DE INTERFACES */
+        /* METODOS ESTATICOS Y ABSTRACTOS */
         public static bool ValidarEstrellas(int estrellas)
         {
             return Alojamiento.MINIMO_NUMERO_DE_ESTRELLAS >= estrellas && estrellas <= Alojamiento.MAXIMO_NUMERO_DE_ESTRELLAS;
         }
         public abstract double PrecioTotalDelAlojamiento();
+        
 
         /* ToString */
         public override string ToString()

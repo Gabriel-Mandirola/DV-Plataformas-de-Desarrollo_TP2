@@ -10,9 +10,11 @@ namespace AgenciaDeAlojamientos
     {
         static void Main(string[] args)
         {
-            PruebasClaseAgencia.iniciar();
-
+            //PruebasClaseAgencia.iniciar();
             //PruebasClaseUsuario.iniciar();
+            //PruebasClaseReserva.iniciar();
+            
+            PruebasClaseAgenciaManager.iniciar();
         }
     }
 }

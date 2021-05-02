@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+
 using AgenciaDeAlojamientos.Helpers;
-using AgenciaDeAlojamientos.Interfaces;
 
 namespace AgenciaDeAlojamientos.Models
 {
@@ -26,7 +24,7 @@ namespace AgenciaDeAlojamientos.Models
         }
 
         
-        /* METODOS DE INTERFACES */
+        /* METODOS ESTATICOS */
         public static Usuario Deserializar(String UsuarioSerializado)
         {
             String[] usuarioArray = Utils.StringToArray(UsuarioSerializado);

@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using AgenciaDeAlojamientos.Interfaces;
 
 namespace AgenciaDeAlojamientos.Models
 {
     internal class Reserva
     {
-        #region Atributos y constructor
         private int id;
         private DateTime fechaDesde;
         private DateTime fechaHasta;
@@ -25,10 +20,9 @@ namespace AgenciaDeAlojamientos.Models
             this.SetUsuario(usuario);
             this.SetPrecio(precio);
         }
-        #endregion
-
-        /* METODOS DE INTERFACES */
         
+
+        /* METODOS ESTATICOS */
 
 
         /* ToString */

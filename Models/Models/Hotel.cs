@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 using AgenciaDeAlojamientos.Helpers;
-using AgenciaDeAlojamientos.Interfaces;
 
 namespace AgenciaDeAlojamientos.Models
 {
@@ -19,6 +16,12 @@ namespace AgenciaDeAlojamientos.Models
             this.SetPrecioPorPersona(precioPorPersona);
         }
 
+        public override double PrecioTotalDelAlojamiento()
+        {
+            return this.GetPrecioPorPersona() * this.GetCantidadDePersonas();
+        }
+
+        /* METODOS ESTATICOS */
         public static Hotel Deserializar(String hotelSerializado)
         {
             String[] hotelArray = Utils.StringToArray(hotelSerializado);
@@ -32,10 +35,6 @@ namespace AgenciaDeAlojamientos.Models
                 bool.Parse(hotelArray[5]),
                 double.Parse(hotelArray[6])
                 );
-        }
-        public override double PrecioTotalDelAlojamiento()
-        {
-            return this.GetPrecioPorPersona() * this.GetCantidadDePersonas();
         }
 
         /* ToString */

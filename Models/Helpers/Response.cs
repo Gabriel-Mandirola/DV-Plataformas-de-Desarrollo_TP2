@@ -7,21 +7,21 @@ namespace AgenciaDeAlojamientos.Helpers
     internal class Response
     {
         private bool response;
-        private String mensaje;
+        private String message;
 
-        public Response(bool response, String mensaje)
+        public Response(bool response, String message)
         {
             this.response = response;
-            this.mensaje = mensaje;
+            this.message = message;
         }
 
         public bool GetResponse()
         {
             return this.response;
         }
-        public String GetMensaje()
+        public String GetMessage()
         {
-            return this.mensaje;
+            return this.message;
         }
     }
 }
