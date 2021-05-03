@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using AgenciaDeAlojamientos.Helpers;
 
@@ -13,16 +14,16 @@ namespace AgenciaDeAlojamientos.Models
         private bool isAdmin;
         private bool bloqueado;
 
-        public Usuario(int dni, String nombre, String email,String password, bool isAdmin, bool bloqueado = false)
+        public Usuario(int dni, String nombre, String email,String password, bool isAdmin, bool bloqueado)
         {
-            this.SetDni(dni);
+            this.setDni(dni);
             this.SetNombre(nombre);
             this.SetEmail(email);
             this.SetPassword(password);
-            this.SetIsAdmin(isAdmin);
+            this.setIsAdmin(isAdmin);
             this.SetBloqueado(bloqueado);
         }
-
+        
         
         /* METODOS ESTATICOS */
         public static Usuario Deserializar(String UsuarioSerializado)
@@ -30,12 +31,21 @@ namespace AgenciaDeAlojamientos.Models
             String[] usuarioArray = Utils.StringToArray(UsuarioSerializado);
             return new Usuario(
                 int.Parse(usuarioArray[0]),
-                usuarioArray[1],
-                usuarioArray[2],
-                usuarioArray[3],
+                usuarioArray[1].ToString(),
+                usuarioArray[2].ToString(),
+                usuarioArray[3].ToString(),
                 bool.Parse(usuarioArray[4]),
                 bool.Parse(usuarioArray[5])
                 );
+        }
+        public static bool GuardarCambiosEnElArchivo(List<Usuario> usuarios)
+        {
+            List<String> usuariosEnListaDeString = new List<string>();
+            foreach (Usuario usuario in usuarios)
+            {
+                usuariosEnListaDeString.Add(usuario.ToString());
+            }
+            return Utils.WriteInFile(Config.PATH_FILE_USUARIOS, usuariosEnListaDeString);
         }
 
         /* ToString */
@@ -59,11 +69,11 @@ namespace AgenciaDeAlojamientos.Models
         public bool GetIsAdmin() { return this.isAdmin; }
         public bool GetBloqueado() { return this.bloqueado; }
 
-        public void SetDni(int dni) { this.dni = dni; }
+        private void setDni(int dni) { this.dni = dni; }
         public void SetNombre(String nombre) { this.nombre = nombre; }
         public void SetEmail(String email) { this.email = email; }
         public void SetPassword(String password) { this.password = password; }
-        public void SetIsAdmin(bool isAdmin) { this.isAdmin = isAdmin; }
+        private void setIsAdmin(bool isAdmin) { this.isAdmin = isAdmin; }
         public void SetBloqueado(bool bloqueado) { this.bloqueado = bloqueado; }
         #endregion
     
