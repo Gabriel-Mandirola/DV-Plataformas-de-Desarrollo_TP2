@@ -15,13 +15,17 @@ namespace AgenciaDeAlojamientos.Pruebas
             Console.WriteLine("\n~~~~ PRUEBAS DE LA CLASE AGENCIAMANAGER ~~~~ \n");
             AgenciaManager agencia = new AgenciaManager();
 
+            #region PRUEBAS DE USUARIOS
             /* LOGIN USER */
             //if (agencia.autenticarUsuario(40393222, "admin1234"))
             //    Console.WriteLine("Logeado");
             //else
             //    Console.WriteLine("No logeado");
 
-            /* CREATE USER */
+            /* READ */
+            //agencia.GetUsuarios().ForEach(user => Console.WriteLine(user));
+
+            /* CREATE */
             //agencia.AgregarUsuario(12312312, "juan", "juan@gmail.com", "juan", true, false);
             //agencia.AgregarUsuario(23423423, "pepe", "pepe@gmail.com", "pepe", false, false);
             //agencia.AgregarUsuario(34534534, "martina", "martina@gmail.com", "martina", true, false);
@@ -42,10 +46,14 @@ namespace AgenciaDeAlojamientos.Pruebas
 
             /* BLOQUEAR Y DESBLOQUEAR */
             //agencia.BloquearUsuario(40393222);
-            //Console.WriteLine(agencia.FindUserForDNI(40393222));
+            //Console.WriteLine(agencia.findUserForDNI(40393222));
             //agencia.DesbloquearUsuario(40393222);
-            //Console.WriteLine(agencia.FindUserForDNI(40393222));
-        
+            //Console.WriteLine(agencia.findUserForDNI(40393222));
+            #endregion
+
+            #region PRUEBAS DE RESEVAS
+
+            #endregion
         }
     }
 }

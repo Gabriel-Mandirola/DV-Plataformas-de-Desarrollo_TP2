@@ -6,7 +6,7 @@ using AgenciaDeAlojamientos.Helpers;
 
 namespace AgenciaDeAlojamientos.Models
 {
-    internal class Agencia
+    public class Agencia
     {
         private List<Alojamiento> alojamientos;
         private int cantidadDeAlojamientos;

@@ -4,7 +4,7 @@ using AgenciaDeAlojamientos.Helpers;
 
 namespace AgenciaDeAlojamientos.Models
 {
-    internal class Hotel : Alojamiento
+    public class Hotel : Alojamiento
     {
         public const int CANTIDAD_DE_ATRIBUTOS = 7;
 

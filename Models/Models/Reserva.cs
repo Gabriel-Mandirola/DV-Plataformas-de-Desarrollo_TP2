@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using AgenciaDeAlojamientos.Helpers;
 
 namespace AgenciaDeAlojamientos.Models
 {
-    internal class Reserva
+    public class Reserva
     {
         private int id;
         private DateTime fechaDesde;
@@ -23,7 +25,28 @@ namespace AgenciaDeAlojamientos.Models
         
 
         /* METODOS ESTATICOS */
-
+        public static Reserva Deserealizar(String reserva)
+        {
+            //String[] reservasArray = Utils.StringToArray(reserva);
+            //return new Reserva(
+            //    int.Parse(reservasArray[0]),
+            //    DateTime.Parse(reservasArray[1]),
+            //    DateTime.Parse(reservasArray[2]),
+            //    int.Parse(reservasArray[3]),
+            //    int.Parse(reservasArray[4]),
+            //    double.Parse(reservasArray[5])
+            //    );
+            return null;
+        }
+        public static bool GuardarCambiosEnElArchivo(List<Reserva> reservas)
+        {
+            List<String> reservasSerializadas = new List<string>(){};
+            foreach(Reserva reserva in reservas)
+            {
+                reservasSerializadas.Add(reserva.ToString());
+            }
+            return Utils.WriteInFile(Config.PATH_FILE_RESERVAS, reservasSerializadas);
+        }
 
         /* ToString */
         public override string ToString()

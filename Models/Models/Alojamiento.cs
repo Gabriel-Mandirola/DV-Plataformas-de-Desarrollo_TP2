@@ -2,7 +2,7 @@
 
 namespace AgenciaDeAlojamientos.Models
 {
-    abstract internal class Alojamiento
+    abstract public class Alojamiento
     {
         public const int MAXIMO_NUMERO_DE_ESTRELLAS = 5;
         public const int MINIMO_NUMERO_DE_ESTRELLAS = 1;

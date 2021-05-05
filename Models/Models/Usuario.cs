@@ -5,7 +5,7 @@ using AgenciaDeAlojamientos.Helpers;
 
 namespace AgenciaDeAlojamientos.Models
 {
-    internal class Usuario
+    public class Usuario
     {
         private int dni;
         private String nombre;

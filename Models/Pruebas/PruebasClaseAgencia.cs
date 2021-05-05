@@ -7,7 +7,7 @@ using AgenciaDeAlojamientos.Models;
 
 namespace AgenciaDeAlojamientos.Pruebas
 {
-    internal class PruebasClaseAgencia
+    public class PruebasClaseAgencia
     {
         public static void iniciar()
         {

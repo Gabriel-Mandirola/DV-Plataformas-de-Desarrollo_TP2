@@ -6,27 +6,28 @@ using AgenciaDeAlojamientos.Helpers;
 
 namespace AgenciaDeAlojamientos
 {
-    internal class AgenciaManager
+    public class AgenciaManager
     {
         private Agencia agencia;
         private List<Usuario> usuarios;
         private List<Reserva> reservas;
 
-        private Usuario usuarioRegistrado;
+        private bool usuarioRegistradoIsAdmin;
 
         public AgenciaManager()
         {
             this.setAgencia(new Agencia());
             this.usuarios = new List<Usuario>();
             this.reservas = new List<Reserva>();
-            this.usuarioRegistrado = null;
+            this.usuarioRegistradoIsAdmin = false;
 
             this.cargarDatosDeLosUsuarios();
         }
 
-        // TODO: Agregar metodos para las reservas
-
         // TODO: Agregar metodos para los alojamientos
+
+        /* METODOS PARA LAS RESERVAS */
+        
 
         /* METODOS PARA LOS USUARIOS */
         public bool AgregarUsuario(int dni, String nombre, String email, String password, bool isAdmin, bool bloqueado)
@@ -57,7 +58,7 @@ namespace AgenciaDeAlojamientos
         
         public bool autenticarUsuario(int dni, String password)
         {
-            Usuario usuarioEncontrado = this.FindUserForDNI(dni);
+            Usuario usuarioEncontrado = this.findUserForDNI(dni);
             if (usuarioEncontrado == null) return false; // DNI no encontrado
             if (usuarioEncontrado.GetPassword() != Utils.Encriptar(password)) return false; // Contraseña incorrecta
             
@@ -82,7 +83,14 @@ namespace AgenciaDeAlojamientos
             this.usuarios[indexUser].SetBloqueado(false);
             return true;
         }
-        public Usuario FindUserForDNI(int dni)
+        public bool ExisteElUsuario(int dni)
+        {
+            if (this.findUserForDNI(dni) == null)
+                return false;
+            else
+                return true;
+        }
+        private Usuario findUserForDNI(int dni)
         {
             return this.GetUsuarios().Find(user => user.GetDni() == dni);
         }
@@ -99,9 +107,10 @@ namespace AgenciaDeAlojamientos
 
 
         /* GETTERS Y SETTERS */
-        public List<Usuario> GetUsuarios() { return this.usuarios; }
-        public List<Reserva> GetReservas() { return this.reservas; }
-        public Usuario GetUsuarioRegistrado() { return this.usuarioRegistrado; }
+        private List<Usuario> GetUsuarios() { return this.usuarios; }
+        private List<Reserva> GetReservas() { return this.reservas; }
+        public Agencia GetAgencia() { return this.agencia; }
+        public bool GetUsuarioRegistradoIsAdmin() { return this.usuarioRegistradoIsAdmin; }
         private void setAgencia(Agencia agencia) { this.agencia = agencia; }
 
     }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AgenciaDeAlojamientos.Helpers
 {
-    internal class Config
+    public class Config
     {
         // Rutas Relativas
         public const String PATH_FILE_USUARIOS = "../../../Data/usuarios.txt";

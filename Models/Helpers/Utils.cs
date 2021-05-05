@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 
 namespace AgenciaDeAlojamientos.Helpers
 {
-    internal class Utils
+    public class Utils
     {
         public static String[] StringToArray(String str)
         {

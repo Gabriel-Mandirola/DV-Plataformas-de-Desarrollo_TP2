@@ -4,4 +4,4 @@
 45645645,martin,martin@gmail.com,b6f8d434a847fb0f0c1a8d9b936b8ca952e224f205a55f4ba9b2c20f88fdc9e7,False,False
 56756756,jose,jose@gmail.com,1ec4ed037766aa181d8840ad04b9fc6e195fd37dedc04c98a5767a67d3758ece,False,False
 67867867,sofia,sofia@gmail.com,86846e84f9bfb2053a4823193843d22a0be24a75d304d6f8a2e4d2fac445efaa,False,False
-40393222,saul,saul@gmail.com,ac9689e2272427085e35b9d3e3e8bed88cb3434828b43b86fc0596cad4c6e270,True,True
+40393222,saul,saul@gmail.com,ac9689e2272427085e35b9d3e3e8bed88cb3434828b43b86fc0596cad4c6e270,True,False

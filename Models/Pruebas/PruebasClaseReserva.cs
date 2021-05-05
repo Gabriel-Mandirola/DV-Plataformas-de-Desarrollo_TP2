@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AgenciaDeAlojamientos.Pruebas
 {
-    internal class PruebasClaseReserva
+    public class PruebasClaseReserva
     {
         public static void iniciar()
         {

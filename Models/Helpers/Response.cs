@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AgenciaDeAlojamientos.Helpers
 {
-    internal class Response
+    public class Response
     {
         private bool response;
         private String message;
