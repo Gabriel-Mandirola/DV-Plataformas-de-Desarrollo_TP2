@@ -12,22 +12,67 @@ namespace AgenciaDeAlojamientos
         private List<Usuario> usuarios;
         private List<Reserva> reservas;
 
-        private bool usuarioRegistradoIsAdmin;
+        private Usuario usuarioLogeado;
 
         public AgenciaManager()
         {
             this.setAgencia(new Agencia());
             this.usuarios = new List<Usuario>();
             this.reservas = new List<Reserva>();
-            this.usuarioRegistradoIsAdmin = false;
+            this.usuarioLogeado = null;
 
             this.cargarDatosDeLosUsuarios();
+            this.cargarDatosDeLasReservas();
         }
 
         // TODO: Agregar metodos para los alojamientos
 
         /* METODOS PARA LAS RESERVAS */
         
+        public bool AgregarReserva(DateTime fechaDesde, DateTime fechaHasta, int codigoAlojamiento, int dniUsuario)
+        {
+            Alojamiento alojamiento = this.GetAgencia().FindAlojamientoForCodigo(codigoAlojamiento);
+            Usuario usuario = this.FindUserForDNI(dniUsuario);
+            if (alojamiento == null || usuario == null) return false;
+
+            String timestamp = DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
+            this.reservas.Add(new Reserva(timestamp, fechaDesde,fechaHasta,alojamiento,usuario,alojamiento.PrecioTotalDelAlojamiento()));
+            return true;
+        }
+        public Reserva FindReservaForId(String id)
+        {
+            return this.GetReservas().Find(reserva => reserva.GetId() == id);
+        }
+        private void cargarDatosDeLasReservas()
+        {
+            List<String> reservasEnLista = Utils.GetDataFile(Config.PATH_FILE_RESERVAS);
+            foreach(String reservaSerializada in reservasEnLista)
+            {
+                String[] reserva = Utils.StringToArray(reservaSerializada);
+
+                Alojamiento alojamiento = this.GetAgencia().FindAlojamientoForCodigo(int.Parse(reserva[3]));
+                Usuario usuario = this.FindUserForDNI(int.Parse(reserva[4]));
+                if (alojamiento == null || usuario == null) { continue; }
+
+                this.reservas.Add(
+                    new Reserva(
+                        reserva[0], 
+                        DateTime.Parse(reserva[1]), 
+                        DateTime.Parse(reserva[2]), 
+                        alojamiento,
+                        usuario,
+                        double.Parse(reserva[5])
+                        )
+                );
+            }
+        }
+        public bool GuardarCambiosDeLasReservas()
+        {
+            List<String> reservas = new List<string>();
+            foreach (Reserva reserva in this.GetReservas())
+                reservas.Add(reserva.ToString());
+            return Utils.WriteInFile(Config.PATH_FILE_RESERVAS, reservas);
+        }
 
         /* METODOS PARA LOS USUARIOS */
         public bool AgregarUsuario(int dni, String nombre, String email, String password, bool isAdmin, bool bloqueado)
@@ -58,16 +103,16 @@ namespace AgenciaDeAlojamientos
         
         public bool autenticarUsuario(int dni, String password)
         {
-            Usuario usuarioEncontrado = this.findUserForDNI(dni);
+            Usuario usuarioEncontrado = this.FindUserForDNI(dni);
             if (usuarioEncontrado == null) return false; // DNI no encontrado
             if (usuarioEncontrado.GetPassword() != Utils.Encriptar(password)) return false; // Contraseña incorrecta
             
-            this.usuarioRegistrado = usuarioEncontrado;
+            this.usuarioLogeado = usuarioEncontrado;
             return true;
         }
         public void CerrarSession()
         {
-            this.usuarioRegistrado = null;
+            this.usuarioLogeado = null;
         }
         public bool BloquearUsuario(int dni)
         {
@@ -83,14 +128,7 @@ namespace AgenciaDeAlojamientos
             this.usuarios[indexUser].SetBloqueado(false);
             return true;
         }
-        public bool ExisteElUsuario(int dni)
-        {
-            if (this.findUserForDNI(dni) == null)
-                return false;
-            else
-                return true;
-        }
-        private Usuario findUserForDNI(int dni)
+        public Usuario FindUserForDNI(int dni)
         {
             return this.GetUsuarios().Find(user => user.GetDni() == dni);
         }
@@ -100,17 +138,17 @@ namespace AgenciaDeAlojamientos
             foreach (String usuario in usuariosSerializados)
                 this.usuarios.Add(Usuario.Deserializar(usuario));
         }
-        public bool GuardarCambiosEnLosUsuarios()
+        public bool GuardarCambiosDeLosUsuarios()
         {
             return Usuario.GuardarCambiosEnElArchivo(this.GetUsuarios());
         }
 
 
         /* GETTERS Y SETTERS */
-        private List<Usuario> GetUsuarios() { return this.usuarios; }
-        private List<Reserva> GetReservas() { return this.reservas; }
+        public List<Usuario> GetUsuarios() { return this.usuarios; }
+        public List<Reserva> GetReservas() { return this.reservas; }
         public Agencia GetAgencia() { return this.agencia; }
-        public bool GetUsuarioRegistradoIsAdmin() { return this.usuarioRegistradoIsAdmin; }
+        public Usuario GetUsuarioLogeado() { return this.usuarioLogeado; }
         private void setAgencia(Agencia agencia) { this.agencia = agencia; }
 
     }
