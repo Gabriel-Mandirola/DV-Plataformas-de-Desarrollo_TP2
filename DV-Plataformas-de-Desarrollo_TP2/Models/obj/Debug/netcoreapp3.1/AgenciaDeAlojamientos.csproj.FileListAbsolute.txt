@@ -1,0 +1,39 @@
+C:\Users\PC 345\source\repos\solucionTP2\Models\bin\Debug\netcoreapp3.1\AgenciaDeAlojamientos.exe
+C:\Users\PC 345\source\repos\solucionTP2\Models\bin\Debug\netcoreapp3.1\AgenciaDeAlojamientos.deps.json
+C:\Users\PC 345\source\repos\solucionTP2\Models\bin\Debug\netcoreapp3.1\AgenciaDeAlojamientos.runtimeconfig.json
+C:\Users\PC 345\source\repos\solucionTP2\Models\bin\Debug\netcoreapp3.1\AgenciaDeAlojamientos.runtimeconfig.dev.json
+C:\Users\PC 345\source\repos\solucionTP2\Models\bin\Debug\netcoreapp3.1\AgenciaDeAlojamientos.dll
+C:\Users\PC 345\source\repos\solucionTP2\Models\bin\Debug\netcoreapp3.1\AgenciaDeAlojamientos.pdb
+C:\Users\PC 345\source\repos\solucionTP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.AssemblyInfoInputs.cache
+C:\Users\PC 345\source\repos\solucionTP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.AssemblyInfo.cs
+C:\Users\PC 345\source\repos\solucionTP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.csproj.CoreCompileInputs.cache
+C:\Users\PC 345\source\repos\solucionTP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.dll
+C:\Users\PC 345\source\repos\solucionTP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.pdb
+C:\Users\PC 345\source\repos\solucionTP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.genruntimeconfig.cache
+C:\Users\PC 345\source\repos\solucionTP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.csprojAssemblyReference.cache
+C:\Users\PC 345\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\bin\Debug\netcoreapp3.1\AgenciaDeAlojamientos.exe
+C:\Users\PC 345\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\bin\Debug\netcoreapp3.1\AgenciaDeAlojamientos.deps.json
+C:\Users\PC 345\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\bin\Debug\netcoreapp3.1\AgenciaDeAlojamientos.runtimeconfig.json
+C:\Users\PC 345\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\bin\Debug\netcoreapp3.1\AgenciaDeAlojamientos.runtimeconfig.dev.json
+C:\Users\PC 345\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\bin\Debug\netcoreapp3.1\AgenciaDeAlojamientos.dll
+C:\Users\PC 345\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\bin\Debug\netcoreapp3.1\AgenciaDeAlojamientos.pdb
+C:\Users\PC 345\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.csprojAssemblyReference.cache
+C:\Users\PC 345\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.AssemblyInfoInputs.cache
+C:\Users\PC 345\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.AssemblyInfo.cs
+C:\Users\PC 345\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.csproj.CoreCompileInputs.cache
+C:\Users\PC 345\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.dll
+C:\Users\PC 345\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.pdb
+C:\Users\PC 345\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.genruntimeconfig.cache
+C:\Users\Gabriel\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.csprojAssemblyReference.cache
+C:\Users\Gabriel\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.AssemblyInfoInputs.cache
+C:\Users\Gabriel\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.AssemblyInfo.cs
+C:\Users\Gabriel\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.csproj.CoreCompileInputs.cache
+C:\Users\Gabriel\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.dll
+C:\Users\Gabriel\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.pdb
+C:\Users\Gabriel\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\bin\Debug\netcoreapp3.1\AgenciaDeAlojamientos.exe
+C:\Users\Gabriel\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\bin\Debug\netcoreapp3.1\AgenciaDeAlojamientos.deps.json
+C:\Users\Gabriel\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\bin\Debug\netcoreapp3.1\AgenciaDeAlojamientos.runtimeconfig.json
+C:\Users\Gabriel\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\bin\Debug\netcoreapp3.1\AgenciaDeAlojamientos.runtimeconfig.dev.json
+C:\Users\Gabriel\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\bin\Debug\netcoreapp3.1\AgenciaDeAlojamientos.dll
+C:\Users\Gabriel\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\bin\Debug\netcoreapp3.1\AgenciaDeAlojamientos.pdb
+C:\Users\Gabriel\source\repos\DV-Plataformas-de-Desarrollo_TP2\Models\obj\Debug\netcoreapp3.1\AgenciaDeAlojamientos.genruntimeconfig.cache
