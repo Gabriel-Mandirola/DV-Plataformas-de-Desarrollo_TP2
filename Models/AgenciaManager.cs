@@ -27,8 +27,7 @@ namespace AgenciaDeAlojamientos
 
         // TODO: Agregar metodos para los alojamientos
 
-        /* METODOS PARA LAS RESERVAS */
-        
+        #region METODOS PARA LAS RESERVAS
         public bool AgregarReserva(DateTime fechaDesde, DateTime fechaHasta, int codigoAlojamiento, int dniUsuario)
         {
             Alojamiento alojamiento = this.GetAgencia().FindAlojamientoForCodigo(codigoAlojamiento);
@@ -39,29 +38,63 @@ namespace AgenciaDeAlojamientos
             this.reservas.Add(new Reserva(timestamp, fechaDesde,fechaHasta,alojamiento,usuario,alojamiento.PrecioTotalDelAlojamiento()));
             return true;
         }
+        public bool ModificarReserva(String id, DateTime fechaDesde, DateTime fechaHasta, int codigoAlojamiento, int dniUsuario)
+        {
+            int indexReserva = this.findIndexReservaPorId(id);
+            if (indexReserva == -1) return false;
+
+            Alojamiento alojamiento = this.agencia.FindAlojamientoForCodigo(codigoAlojamiento);
+            Usuario usuario = this.FindUserForDNI(dniUsuario);
+            if (alojamiento == null || usuario == null) return false;
+
+            this.reservas[indexReserva].SetFechaDesde(fechaDesde);
+            this.reservas[indexReserva].SetFechaHasta(fechaHasta);
+            this.reservas[indexReserva].SetAlojamiento(alojamiento);
+            this.reservas[indexReserva].SetUsuario(usuario);
+            this.reservas[indexReserva].SetPrecio(alojamiento.PrecioTotalDelAlojamiento());
+            return true;
+        }
+        public bool EliminarReserva(String id)
+        {
+            int indexReserva = this.findIndexReservaPorId(id);
+            if (indexReserva == -1) return false;
+
+            this.reservas.RemoveAt(indexReserva);
+            return true;
+        }
+        
         public Reserva FindReservaForId(String id)
         {
             return this.GetReservas().Find(reserva => reserva.GetId() == id);
+        }
+        public List<Reserva> GetAllReservasForUsuario(int dni)
+        {
+            return this.reservas.FindAll(reserva => reserva.GetUsuario().GetDni() == dni);
+        }
+        private int findIndexReservaPorId(String id)
+        {
+            return this.reservas.FindIndex(reserva => reserva.GetId() == id);
         }
         private void cargarDatosDeLasReservas()
         {
             List<String> reservasEnLista = Utils.GetDataFile(Config.PATH_FILE_RESERVAS);
             foreach(String reservaSerializada in reservasEnLista)
             {
-                String[] reserva = Utils.StringToArray(reservaSerializada);
-
-                Alojamiento alojamiento = this.GetAgencia().FindAlojamientoForCodigo(int.Parse(reserva[3]));
-                Usuario usuario = this.FindUserForDNI(int.Parse(reserva[4]));
-                if (alojamiento == null || usuario == null) { continue; }
+                String[] reservaArray = Utils.StringToArray(reservaSerializada);
+                Alojamiento alojamiento = this.GetAgencia().FindAlojamientoForCodigo(int.Parse(reservaArray[3]));
+                Usuario usuario = this.FindUserForDNI(int.Parse(reservaArray[4]));
+                
+                if (alojamiento == null || usuario == null) 
+                    continue;
 
                 this.reservas.Add(
                     new Reserva(
-                        reserva[0], 
-                        DateTime.Parse(reserva[1]), 
-                        DateTime.Parse(reserva[2]), 
+                        reservaArray[0],
+                        DateTime.Parse(reservaArray[1]),
+                        DateTime.Parse(reservaArray[2]),
                         alojamiento,
                         usuario,
-                        double.Parse(reserva[5])
+                        double.Parse(reservaArray[5])
                         )
                 );
             }
@@ -73,8 +106,9 @@ namespace AgenciaDeAlojamientos
                 reservas.Add(reserva.ToString());
             return Utils.WriteInFile(Config.PATH_FILE_RESERVAS, reservas);
         }
+        #endregion
 
-        /* METODOS PARA LOS USUARIOS */
+        #region METODOS PARA LOS USUARIOS
         public bool AgregarUsuario(int dni, String nombre, String email, String password, bool isAdmin, bool bloqueado)
         {
             this.usuarios.Add(new Usuario(dni,nombre,email,Utils.Encriptar(password), isAdmin,bloqueado));
@@ -82,7 +116,7 @@ namespace AgenciaDeAlojamientos
         }
         public bool ModificarUsuario(int dni, String nombre, String email, String password = "")
         {
-            int indexUser = this.usuarios.FindIndex(user => user.GetDni() == dni);
+            int indexUser = this.findIndexUsuarioForDNIO(dni);
             if (indexUser == -1) return false; // Usuario no encontrado
 
             this.usuarios[indexUser].SetNombre(nombre);
@@ -95,7 +129,7 @@ namespace AgenciaDeAlojamientos
         }
         public bool EliminarUsuario(int dni)
         {
-            int indexUser = this.usuarios.FindIndex(user => user.GetDni() == dni);
+            int indexUser = this.findIndexUsuarioForDNIO(dni);
             if (indexUser == -1) return false;
             this.usuarios.RemoveAt(indexUser);
             return true;
@@ -132,6 +166,10 @@ namespace AgenciaDeAlojamientos
         {
             return this.GetUsuarios().Find(user => user.GetDni() == dni);
         }
+        private int findIndexUsuarioForDNIO(int dni)
+        {
+            return this.usuarios.FindIndex(user => user.GetDni() == dni);
+        }
         private void cargarDatosDeLosUsuarios()
         {
             List<String> usuariosSerializados = Utils.GetDataFile(Config.PATH_FILE_USUARIOS);
@@ -142,7 +180,7 @@ namespace AgenciaDeAlojamientos
         {
             return Usuario.GuardarCambiosEnElArchivo(this.GetUsuarios());
         }
-
+        #endregion
 
         /* GETTERS Y SETTERS */
         public List<Usuario> GetUsuarios() { return this.usuarios; }

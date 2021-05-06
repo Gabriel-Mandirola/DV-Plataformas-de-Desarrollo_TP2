@@ -17,7 +17,7 @@ namespace AgenciaDeAlojamientos.Models
         {
             this.setId(id);
             this.SetFechaDesde(fechaDesde);
-            this.SetFechaDesde(fechaHasta);
+            this.SetFechaHasta(fechaHasta);
             this.SetAlojamiento(alojamiento);
             this.SetUsuario(usuario);
             this.SetPrecio(precio);
@@ -40,8 +40,8 @@ namespace AgenciaDeAlojamientos.Models
         {
             String objetoSerializado = "";
             objetoSerializado += this.GetId().ToString() + ",";
-            objetoSerializado += this.GetFechaDesde() + ",";
-            objetoSerializado += this.GetFechaHasta() + ",";
+            objetoSerializado += this.GetFechaDesde().ToString() + ",";
+            objetoSerializado += this.GetFechaHasta().ToString() + ",";
             objetoSerializado += this.GetAlojamiento().GetCodigo().ToString() + ",";
             objetoSerializado += this.GetUsuario().GetDni().ToString() + ",";
             objetoSerializado += this.GetAlojamiento().PrecioTotalDelAlojamiento().ToString();

@@ -54,11 +54,17 @@ namespace AgenciaDeAlojamientos.Pruebas
 
             #region PRUEBAS DE RESEVAS
             /* READ */
-            agencia.GetReservas().ForEach(reserva => Console.WriteLine(reserva.ToString()));
+            //agencia.GetReservas().ForEach(reserva => Console.WriteLine(reserva));
 
             /* Find Reserva*/
-            //String reserva_id = "1620250908";
+            //String reserva_id = "1620250906";
             //Console.WriteLine(agencia.FindReservaForId(reserva_id).ToString());
+
+            /* Get Reservas For User */
+            //foreach (Reserva reserva in agencia.GetAllReservasForUsuario(12312312))
+            //{
+            //    Console.WriteLine(reserva);
+            //}
 
             /* CREATE */
             //Console.WriteLine(agencia.AgregarReserva(DateTime.Now, DateTime.Now, 412, 12312312) ? "Se agrego" : "No se agrego");
@@ -66,11 +72,30 @@ namespace AgenciaDeAlojamientos.Pruebas
             //Console.WriteLine(agencia.AgregarReserva(DateTime.Now, DateTime.Now, 543, 23423423) ? "Se agrego" : "No se agrego");
             //Thread.Sleep(1000);
             //Console.WriteLine(agencia.AgregarReserva(DateTime.Now, DateTime.Now, 752, 34534534) ? "Se agrego" : "No se agrego");
-            //agencia.GuardarCambiosDeLasReservas();
+            //Console.Write(agencia.GuardarCambiosDeLasReservas() ? "Cambios guardados" : "No se pudo guardar");
 
             /* Eliminar */
+            //if (agencia.EliminarReserva("1620250908"))
+            //{
+            //    Console.Write(agencia.GuardarCambiosDeLasReservas() ? "Cambios guardados" : "No se pudo guardar");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("No se pudo eliminar la reserva");
+            //}
+            //agencia.GetReservas().ForEach(reserva => Console.WriteLine(reserva.ToString()));
 
-
+            /* UPDATE */
+            ////Antes de ser modificado: 1620250908,5/5/2021 18:41:48,5/7/2021 23:59:59,752,34534534,4500
+            //if (agencia.ModificarReserva("1620250908", new DateTime(2021,5,5,18,25,00), new DateTime(2021,10,5), 123, 34534534))
+            //{
+            //    Console.WriteLine("Reserva modificada");
+            //    Console.WriteLine( agencia.GuardarCambiosDeLasReservas() ? "Cambios guardados":"No se guardaron los cambios" );
+            //}
+            //else
+            //{
+            //    Console.WriteLine("No se pudo modificada la reserva");
+            //}
             #endregion
         }
     }
