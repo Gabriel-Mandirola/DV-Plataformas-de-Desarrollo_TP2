@@ -33,13 +33,15 @@ namespace AgenciaDeAlojamientos.Pruebas
             //agencia.AgregarAlojamiento(hotel3);
             //agencia.AgregarAlojamiento(cabania1);
             //agencia.AgregarAlojamiento(cabania2);
-            Console.WriteLine("Hola");
-            Console.WriteLine(agencia.ExisteAlojamiento(hotel1));
+            //Console.WriteLine("Hola");
+            //Console.WriteLine(agencia.ExisteAlojamiento(hotel1));
             
             
 
             //Console.WriteLine(agencia.getHoteles());
-            agencia.getCabanias().ForEach(hotel => Console.WriteLine(hotel));
+            //agencia.getAlojamientoXPersonas().ForEach(hotel => Console.WriteLine(hotel));
+            //agencia.getAlojamientoXCodigo().ForEach(hotel => Console.WriteLine(hotel));
+            //agencia.getAlojamientoEstrellas().ForEach(hotel => Console.WriteLine(hotel));
             //agencia.getAllAlojamientos().ForEach(alojamiento => Console.WriteLine(alojamiento));
             //Console.WriteLine("Holaas");
             
