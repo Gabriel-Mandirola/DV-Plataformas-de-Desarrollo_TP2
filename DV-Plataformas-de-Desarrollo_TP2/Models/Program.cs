@@ -14,7 +14,7 @@ namespace AgenciaDeAlojamientos
             //PruebasClaseReserva.iniciar();
             
             //PruebasClaseAgenciaManager.iniciar();
-            Console.WriteLine("Hola");
+            //Console.WriteLine("Hola");
            
         }
     }
