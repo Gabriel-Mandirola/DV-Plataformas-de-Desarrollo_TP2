@@ -45,6 +45,8 @@ namespace AgenciaDeAlojamientos.Models
         }
         #endregion
 
+
+        
         public List<Hotel> getHoteles()
         {
             var lista = new List<Hotel>();
@@ -129,6 +131,56 @@ namespace AgenciaDeAlojamientos.Models
             }
             return lista;
         } 
+
+        public List<Alojamiento> getAlojamientoEstrellas(){
+            var lista = new List<Alojamiento>();
+            lista = alojamientos;
+            Alojamiento t;
+            for(int i = 1; i < lista.Count; i++){
+                for(int j = lista.Count - 1; j >=i; j--){
+                    if(lista[j-1].GetEstrellas() > lista[j].GetEstrellas()){
+                        t = lista[j-1];
+                        lista[j-1] = lista[j];
+                        lista[j] = t;
+                    }
+                }
+            }
+            return lista;
+        }
+
+         public List<Alojamiento> getAlojamientoXPersonas(){
+            var lista = new List<Alojamiento>();
+            lista = alojamientos;
+            Alojamiento t;
+            for(int i = 1; i < lista.Count; i++){
+                for(int j = lista.Count - 1; j >=i; j--){
+                    if(lista[j-1].GetCantidadDePersonas() > lista[j].GetCantidadDePersonas()){
+                        t = lista[j-1];
+                        lista[j-1] = lista[j];
+                        lista[j] = t;
+                    }
+                }
+            }
+            return lista;
+        }
+
+
+         public List<Alojamiento> getAlojamientoXCodigo(){
+            var lista = new List<Alojamiento>();
+            lista = alojamientos;
+            Alojamiento t;
+            for(int i = 1; i < lista.Count; i++){
+                for(int j = lista.Count - 1; j >=i; j--){
+                    if(lista[j-1].GetCodigo() > lista[j].GetCodigo()){
+                        t = lista[j-1];
+                        lista[j-1] = lista[j];
+                        lista[j] = t;
+                    }
+                }
+            }
+            return lista;
+        }
+
 
 
 
