@@ -97,6 +97,33 @@ namespace AgenciaDeAlojamientos.Pruebas
             //    Console.WriteLine("No se pudo modificada la reserva");
             //}
             #endregion
+
+            #region PRUEBAS DE LOS ALOJAMIENTOS
+            Agencia alojamientoController = agencia.GetAgencia();
+
+            /* TODOS LOS ALOJAMIENTOS */
+            //alojamientoController.GetAllAlojamientos().ForEach(al => Console.WriteLine(al));
+            //alojamientoController.GetAllAlojamientos(4).ForEach(al => Console.WriteLine(al));
+            //alojamientoController.GetAllAlojamientos(4000,5000).ForEach(al => Console.WriteLine(al));
+            
+            // METODOS DE ORDENAMIENTO
+            //alojamientoController.GetAlojamientoPorEstrellas().ForEach(al => Console.WriteLine(al));
+            //alojamientoController.GetAlojamientoPorCodigo().ForEach(al => Console.WriteLine(al));
+            //alojamientoController.GetAlojamientoPorPersonas().ForEach(al => Console.WriteLine(al));
+            
+            Console.WriteLine(); // Separador
+
+            /* HOTELS */
+            //alojamientoController.GetHoteles().ForEach( hotel => Console.WriteLine(hotel));
+            //alojamientoController.GetHoteles(3500,5000).ForEach(hotel => Console.WriteLine(hotel));
+
+            //Console.WriteLine(); // Separador
+
+            /* CABANIAS */
+            //alojamientoController.GetCabanias().ForEach(cabania => Console.WriteLine(cabania));
+            //alojamientoController.GetCabanias(2000, 3000).ForEach(cabania => Console.WriteLine(cabania));
+            #endregion
+
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 using AgenciaDeAlojamientos.Helpers;
@@ -45,20 +46,55 @@ namespace AgenciaDeAlojamientos.Models
         }
         #endregion
 
-        /* Metodos para obtener Alojamientos con filtros */
-        // TODO: Agregar los siguientes metodos:
-        /*
-        * GetHoteles(): List < Hotel >
-        * GetHoteles(double precioMinimo, double precioMaximo): List < Hotel >
-        * GetCabanias(): List < Cabania >
-        * GetCabanias(double precioMinimo, double precioMaximo): List < Cabania >
-        * GetAllAlojamientos(): List < Alojamiento >
-        * GetAllAlojamientos(int minimoEstrellas): List < Alojamiento >
-        * GetAllAlojamientos(double precioMinimo, double precioMaximo): List<Alojamiento>
-        */
+        /* METODOS PARA FILTRAR ALOJAMIENTOS */
+        public List<Alojamiento> GetHoteles()
+        {
+            return this.alojamientos.FindAll( alojamiento => alojamiento is Hotel);
+        }
+        public List<Alojamiento> GetHoteles(double precioMinimo, double precioMaximo)
+        {
+            return this.alojamientos.FindAll( al => al is Hotel && al.PrecioTotalDelAlojamiento() >= precioMinimo && al.PrecioTotalDelAlojamiento() <= precioMaximo);
+        }
+        public List<Alojamiento> GetCabanias()
+        {
+            return this.alojamientos.FindAll( alojamiento => alojamiento is Cabania);
+        }
+        public List<Alojamiento> GetCabanias(double precioMinimo, double precioMaximo)
+        {
+            return this.alojamientos.FindAll(al => al is Cabania && al.PrecioTotalDelAlojamiento() >= precioMinimo && al.PrecioTotalDelAlojamiento() <= precioMaximo);
+        }
+        public List<Alojamiento> GetAllAlojamientos()
+        {
+            return this.getAlojamientos();
+        }
+        public List<Alojamiento> GetAllAlojamientos(int minimoEstrellas)
+        {
+            return this.alojamientos.FindAll(alojamiento => alojamiento.GetEstrellas() >= minimoEstrellas);
+        }
+        public List<Alojamiento> GetAllAlojamientos(double precioMinimo, double precioMaximo)
+        {
+            return this.alojamientos.FindAll(al => al.PrecioTotalDelAlojamiento() >= precioMinimo && al.PrecioTotalDelAlojamiento() <= precioMaximo);
+        }
+
+        /* METODOS DE ORDENAMIENTO */
+        public List<Alojamiento> GetAlojamientoPorEstrellas(List<Alojamiento> alojamientos = null)
+        {
+            List<Alojamiento> alojamientosAOrdenar = alojamientos == null ? this.alojamientos : alojamientos;
+            return alojamientosAOrdenar.OrderBy(alojamiento => alojamiento.GetEstrellas()).ToList();
+        }
+        public List<Alojamiento> GetAlojamientoPorPersonas(List<Alojamiento> alojamientos = null)
+        {
+            List<Alojamiento> alojamientosAOrdenar = alojamientos == null ? this.alojamientos : alojamientos;
+            return alojamientosAOrdenar.OrderBy(alojamiento => alojamiento.GetCantidadDePersonas()).ToList();
+        }
+        public List<Alojamiento> GetAlojamientoPorCodigo(List<Alojamiento> alojamientos = null)
+        {
+            List<Alojamiento> alojamientosAOrdenar = alojamientos == null ? this.alojamientos : alojamientos;
+            return alojamientosAOrdenar.OrderBy(alojamiento => alojamiento.GetCodigo()).ToList();
+        }
 
 
-        /* Metodos complementarios */
+        /* METODOS COMPLEMENTARIOS */
         public Alojamiento FindAlojamientoForCodigo(int codigoAlojamiento)
         {
             return this.alojamientos.Find( al => al.GetCodigo() == codigoAlojamiento );
@@ -98,6 +134,6 @@ namespace AgenciaDeAlojamientos.Models
 
         /* GETTER */
         public int GetCantidadDeAlojamientos() { return this.cantidadDeAlojamientos; }
-
+        private List<Alojamiento> getAlojamientos() { return this.alojamientos; }
     }
 }
